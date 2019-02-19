@@ -79,13 +79,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="One &amp;&amp; More">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="认识Javascript的类123456789101112function User(name, passwordHash) &amp;#123;    this.name = name;    this.password = passwordHash;&amp;#125;User.prototype.toString = function() &amp;#123;    return &quot;[User &quot; + this.n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS基础：类和继承">
+<meta property="og:url" content="http://yoursite.com/2019/02/19/js-class-inheritance/index.html">
 <meta property="og:site_name" content="One &amp;&amp; More">
+<meta property="og:description" content="认识Javascript的类123456789101112function User(name, passwordHash) &amp;#123;    this.name = name;    this.password = passwordHash;&amp;#125;User.prototype.toString = function() &amp;#123;    return &quot;[User &quot; + this.n">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/02/19/js-class-inheritance/DEEECAF9-F151-4566-9B8A-A4E09687B137.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/19/js-class-inheritance/075B63FC-C989-4AED-B6AC-07357FC10102.png">
+<meta property="og:updated_time" content="2019-02-19T07:55:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="One &amp;&amp; More">
+<meta name="twitter:title" content="JS基础：类和继承">
+<meta name="twitter:description" content="认识Javascript的类123456789101112function User(name, passwordHash) &amp;#123;    this.name = name;    this.password = passwordHash;&amp;#125;User.prototype.toString = function() &amp;#123;    return &quot;[User &quot; + this.n">
+<meta name="twitter:image" content="http://yoursite.com/2019/02/19/js-class-inheritance/DEEECAF9-F151-4566-9B8A-A4E09687B137.png">
 
 
 
@@ -115,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/19/js-class-inheritance/">
 
 
 
 
 
-  <title>One && More</title>
+  <title>JS基础：类和继承 | One && More</title>
   
 
 
@@ -140,8 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,140 +220,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/19/react-composite-inheritance/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JoeMaybe">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="One && More">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/19/react-composite-inheritance/" itemprop="url">组合 vs 继承</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-19T15:39:11+08:00">
-                2019-02-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题描述：RN项目里需要每个页面监听Android Back键从而实现物理键回退功能</p>
-<h2 id="继承方案"><a href="#继承方案" class="headerlink" title="继承方案"></a>继承方案</h2><p>定义一个基础组件BaseComponent做监听，所有的页面都继承这个组件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">    &#125;</span><br><span class="line">    componentWillMount() &#123;</span><br><span class="line">        <span class="keyword">if</span> (Platform.OS === <span class="string">'android'</span>) &#123;</span><br><span class="line">            BackAndroid.addEventListener(<span class="string">"hardwareBackPress"</span>, <span class="keyword">this</span>.onBackClicked);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentWillUnmount() &#123;</span><br><span class="line">        <span class="keyword">if</span> (Platform.OS === <span class="string">'android'</span>) &#123;</span><br><span class="line">            BackAndroid.removeEventListener(<span class="string">"hardwareBackPress"</span>, <span class="keyword">this</span>.onBackClicked);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    onBackClicked = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> parent = <span class="keyword">this</span>.props.navigation.dangerouslyGetParent();</span><br><span class="line">        <span class="keyword">const</span> canGoBack = parent &amp;&amp; parent.state &amp;&amp; parent.state.index &gt; <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (!canGoBack) &#123;</span><br><span class="line">            <span class="keyword">const</span> RouterManager = NativeModules.RNRouterManager;</span><br><span class="line">            RouterManager.pop();</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> &#123; goBack &#125; = <span class="keyword">this</span>.props.navigation;</span><br><span class="line">            goBack();</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>乍一看，好像没错，问题出在哪？</p>
-<p>React生命周期函数会被子类覆盖！！</p>
-<h2 id="组合方案"><a href="#组合方案" class="headerlink" title="组合方案"></a>组合方案</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> BackListenedComponent = <span class="function">(<span class="params">ComposedComponent</span>) =&gt;</span> </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">BackListenedComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">        componentWillMount() &#123;</span><br><span class="line">            <span class="keyword">if</span> (Platform.OS === <span class="string">'android'</span>) &#123;</span><br><span class="line">                BackAndroid.addEventListener(<span class="string">"hardwareBackPress"</span>, <span class="keyword">this</span>.onBackClicked);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        componentWillUnmount() &#123;</span><br><span class="line">            <span class="keyword">if</span> (Platform.OS === <span class="string">'android'</span>) &#123;</span><br><span class="line">                BackAndroid.removeEventListener(<span class="string">"hardwareBackPress"</span>, <span class="keyword">this</span>.onBackClicked);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        render()&#123;</span><br><span class="line">            <span class="keyword">return</span> &lt;ComposedComponent &#123;...this.state&#125; &#123;...this.props&#125;&gt;&lt;/ComposedComponent&gt;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        onBackClicked = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> parent = <span class="keyword">this</span>.props.navigation.dangerouslyGetParent();</span><br><span class="line">            <span class="keyword">const</span> canGoBack = parent &amp;&amp; parent.state &amp;&amp; parent.state.index &gt; <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (!canGoBack) &#123;</span><br><span class="line">                <span class="keyword">const</span> RouterManager = NativeModules.RNRouterManager;</span><br><span class="line">                RouterManager.pop();</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">const</span> &#123; goBack &#125; = <span class="keyword">this</span>.props.navigation;</span><br><span class="line">                goBack();</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>At Facebook, we use React in thousands of components, and we haven’t found any use cases where we would recommend creating component inheritance hierarchies.</p>
-</blockquote>
-<p>Facebook自己的实践中也都是用组合来实现的，对开发者也是如此推荐，这种组合的模式也叫做高阶组件hoc（higher-order components），简单的说，高阶组件就是一个函数，把一种组件转化成另外一种组件，切面编程是它的一种经典使用场景。</p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://reactjs.org/docs/composition-vs-inheritance.html" target="_blank" rel="noopener">Composition vs Inheritance</a></p>
-<p><a href="https://reactjs.org/docs/higher-order-components.html" target="_blank" rel="noopener">Higher-Order Components</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -377,9 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/19/js-class-inheritance/" itemprop="url">JS基础：类和继承</a></h1>
+          <h1 class="post-title" itemprop="name headline">JS基础：类和继承</h1>
         
 
         <div class="post-meta">
@@ -429,9 +302,7 @@
       
 
       
-        
-          
-            <h2 id="认识Javascript的类"><a href="#认识Javascript的类" class="headerlink" title="认识Javascript的类"></a>认识Javascript的类</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name, passwordHash</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.password = passwordHash;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">User.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"[User "</span> + <span class="keyword">this</span>.name + <span class="string">"]"</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">User.prototype.checkPassword = <span class="function"><span class="keyword">function</span>(<span class="params">password</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> hash(password) === <span class="keyword">this</span>.passwordHash;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <h2 id="认识Javascript的类"><a href="#认识Javascript的类" class="headerlink" title="认识Javascript的类"></a>认识Javascript的类</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name, passwordHash</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.password = passwordHash;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">User.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"[User "</span> + <span class="keyword">this</span>.name + <span class="string">"]"</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">User.prototype.checkPassword = <span class="function"><span class="keyword">function</span>(<span class="params">password</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> hash(password) === <span class="keyword">this</span>.passwordHash;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p><strong>Javascript中的类本质上是一个构造函数（User）与一个用于在该类（User.prototype）实例间共享方法的原型对象的结合</strong></p>
 <p><img src="/2019/02/19/js-class-inheritance/DEEECAF9-F151-4566-9B8A-A4E09687B137.png" alt="DEEECAF9-F151-4566-9B8A-A4E09687B137"></p>
 <p>在JS中，函数本身也是一个对象，prototype是它的一个属性，称为对象原型，其本质也是一个对象，包含constructor和其他属性成员。constructor默认指向自身构造函数。 当我们使用new操作符创建User的实例时，产生的对象u得到了自动分配的原型对象，该原型对象被存储在User.prototype中。实例对象u根据prototype.constructor 所指向的构造函数进行实例初始化。</p>
@@ -444,8 +315,6 @@
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://www.jianshu.com/p/4d491a18b3f0" target="_blank" rel="noopener">js对象原型与继承</a></p>
 <p><a href="http://vdisk.weibo.com/s/u6b1909gma8s5" target="_blank" rel="noopener">Effective Javascript</a></p>
 
-          
-        
       
     </div>
     
@@ -462,12 +331,28 @@
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/19/react-composite-inheritance/" rel="prev" title="组合 vs 继承">
+                组合 vs 继承 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -477,10 +362,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -488,6 +374,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -508,8 +398,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -551,6 +450,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#认识Javascript的类"><span class="nav-number">1.</span> <span class="nav-text">认识Javascript的类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#认识Javascript的继承"><span class="nav-number">2.</span> <span class="nav-text">认识Javascript的继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6下的语法"><span class="nav-number">3.</span> <span class="nav-text">ES6下的语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -684,6 +599,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
