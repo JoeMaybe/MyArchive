@@ -300,7 +300,8 @@
       
         
           
-            <h2 id="利用huskey和lint-staged在git-commit之前做代码检查"><a href="#利用huskey和lint-staged在git-commit之前做代码检查" class="headerlink" title="利用huskey和lint-staged在git commit之前做代码检查"></a>利用huskey和lint-staged在git commit之前做代码检查</h2><p>git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。</p>
+            <p>##利用huskey和lint-staged在git commit之前做代码检查</p>
+<p>git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。</p>
 <p>为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。</p>
 <ol>
 <li>安装husky和lint-staged</li>
@@ -312,7 +313,8 @@
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"husky"</span>: &#123;</span><br><span class="line">    <span class="attr">"hooks"</span>: &#123;</span><br><span class="line">      <span class="attr">"pre-commit"</span>: <span class="string">"lint-staged"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"lint-staged"</span>: &#123;</span><br><span class="line">    <span class="attr">"*.&#123;js,vue&#125;"</span>: [<span class="string">"eslint --fix"</span>, <span class="string">"git add"</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>husky在install action中会替换hooks目录下的相关钩子函数，触发时转去执行package.json中配置的命名，在uninstall action中会恢复原状。</p>
 <p>lint-staged是为了提高lint的效率，只知道提交的文件进行检查。</p>
-<h2 id="前端代码查重–jsinspect"><a href="#前端代码查重–jsinspect" class="headerlink" title="前端代码查重–jsinspect"></a>前端代码查重–jsinspect</h2><p>重构代码时很重要的一步就是抽取通用代码，不要repeat yourself，不要ctrl-c/ctrl-v。</p>
+<p>##前端代码查重–jsinspect</p>
+<p>重构代码时很重要的一步就是抽取通用代码，不要repeat yourself，不要ctrl-c/ctrl-v。</p>
 <p>jsinspect帮助我们快速查找项目里面的重复代码。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jsinspect -t <span class="number">50</span> --ignore <span class="string">"test"</span> ./src</span><br></pre></td></tr></table></figure>
 <p>参数解析：</p>
