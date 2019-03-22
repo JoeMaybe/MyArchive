@@ -229,6 +229,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/ReactNative单元测试从入门到放弃/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JoeMaybe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="One && More">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/22/ReactNative单元测试从入门到放弃/" itemprop="url">ReactNative单元测试从入门到放弃</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-22T13:49:49+08:00">
+                2019-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近在做React Native项目工程化的事，eslint代码检查，Prettier代码美化，git commit hook检查等，然后就是考虑单元测试，虽然都是前端技术栈的内容，但是因为React Native会涉及很多原生模块，在单元测试环境搭建上会比纯web端麻烦一点。</p>
+<h2 id="工具箱"><a href="#工具箱" class="headerlink" title="工具箱"></a>工具箱</h2><p><strong>Jest+babel-jest+babel</strong></p>
+<p>RN项目默认是使用Jest来做单元测试的，所以也没必要去找其他测试框架，就他了。RN项目的编译打包是集成在metro里面的，已达到开箱即用的目的。但是Jest框架运行的时候是直接加载js源文件的，所以需要babel编译器的帮忙。</p>
+<p>babel基础配置：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//.babelrc</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"presets"</span>: [<span class="string">"react-native"</span>],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然可能会遇到很多js语法编译的问题，需要个别添加preset和plugin支持，比如下面的错误：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">src/components/home/items.js: Missing class properties transform.</span><br><span class="line">        34 |   &#125;</span><br><span class="line">        35 | </span><br><span class="line">      &gt; 36 |   _onPress = () =&gt; &#123;</span><br><span class="line">           |   ^</span><br><span class="line">        37 |     this.props.onPress();</span><br><span class="line">        38 |   &#125;;</span><br><span class="line">        39 | &#125;</span><br></pre></td></tr></table></figure>
+<p>需要添加babel transform plugin：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//.babelrc</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"presets"</span>: [<span class="string">"react-native"</span>,<span class="string">"env"</span>],</span><br><span class="line">  <span class="attr">"plugins"</span>: [<span class="string">"transform-class-properties"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其他情况不再赘言。</p>
+<p>Jest配置：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // Load setup-tests.js before test execution</span><br><span class="line">  // setupTestFrameworkScriptFile: '&lt;rootDir&gt;setup-tests.js',</span><br><span class="line">  testEnvironment: 'node',</span><br><span class="line">  moduleNameMapper: &#123;</span><br><span class="line">    "^[./a-zA-Z0-9$_-]+\\.(bmp|gif|jpg|jpeg|mp4|png|psd|svg|webp)$": "&lt;rootDir&gt;/node_modules/react-native/jest/assetFileTransformer.js"</span><br><span class="line">  &#125;,</span><br><span class="line">  modulePathIgnorePatterns: [</span><br><span class="line">    <span class="string">"&lt;rootDir&gt;/node_modules/react-native/Libraries/react-native/"</span></span><br><span class="line">  ],</span><br><span class="line">  transformIgnorePatterns: [</span><br><span class="line">    <span class="string">"node_modules/(?!(react-native.*|static-container|react-navigation.*)/)"</span></span><br><span class="line">  ],</span><br><span class="line">  verbose: true,</span><br><span class="line">  preset:"react-native"</span><br><span class="line">  // ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这里没有写transformer参数是因为安装babel-jest后默认tranformer就是它，testEnvironment和preset需要分别设置成node和react-native。</p>
+<p>另外有两个参数需要特别注意一下</p>
+<p><strong>moduleNameMapper:</strong> 对于js文件中引用的静态资源需要进行mock，这里用的是react-native里面的transformer</p>
+<p><strong>transformIgnorePatterns:</strong> jest tranformer默认不转换node_modules下的非标准js文件，所以一些三方库没有事先编译的话就需要添加白名单。否则就会出现下面类似的错误：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">node_modules/<span class="keyword">static</span>-container/StaticContainer.js:<span class="number">1</span></span><br><span class="line">    (&#123;<span class="string">"Object.&lt;anonymous&gt;"</span>:<span class="function"><span class="keyword">function</span>(<span class="params">module,exports,require,__dirname,__filename,global,jest</span>)</span>&#123;<span class="keyword">import</span> React, &#123; Component, Children &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line">                                                                                             ^^^^^^</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">SyntaxError</span>: Unexpected token <span class="keyword">import</span></span><br><span class="line">      </span><br><span class="line">      at ScriptTransformer._transformAndBuildScript (node_modules/jest-runtime/build/script_transformer.js:<span class="number">316</span>:<span class="number">17</span>)</span><br><span class="line">      at <span class="built_in">Object</span>.&lt;anonymous&gt; (node_modules/react-native-root-siblings/index.js:<span class="number">1</span>:<span class="number">1014</span>)</span><br><span class="line">      at <span class="built_in">Object</span>.&lt;anonymous&gt; (node_modules/react-native-root-toast/lib/Toast.js:<span class="number">1</span>:<span class="number">1048</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>react-native-mock-render + react-test-renderer</strong></p>
+<p>缺少原生mock的典型报错：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Invariant Violation: Native <span class="built_in">module</span> cannot be <span class="literal">null</span>.</span><br><span class="line">      at invariant (node_modules/fbjs/lib/invariant.js:<span class="number">42</span>:<span class="number">15</span>)</span><br><span class="line">      at <span class="keyword">new</span> NativeEventEmitter (node_modules/react-native/Libraries/EventEmitter/NativeEventEmitter.js:<span class="number">1</span>:<span class="number">2401</span>)</span><br><span class="line">      at <span class="built_in">Object</span>.&lt;anonymous&gt; (node_modules/react-native/Libraries/Components/Keyboard/Keyboard.js:<span class="number">1</span>:<span class="number">382</span>)</span><br><span class="line">      at <span class="built_in">Object</span>.&lt;anonymous&gt; (node_modules/react-native/Libraries/Components/ScrollResponder.js:<span class="number">1</span>:<span class="number">200</span>)</span><br></pre></td></tr></table></figure>
+<p>RN单元测试最麻烦的就是对原生模块的mock，三方库react-native-mock-render可以帮我们做一些基础的mock，特别是一些RN特有的组件，比如StatusBar，SafeAreaView。而vdom的渲染测试可以使用react-test-renderer来做。</p>
+<p>很多网上的教程一上来就是Jest+Enzyme，实验后并不推荐一开始使用Enzyme，Enzyme为了适配RN项目提供了enzyme-adapter-react-16，这个adapter也是基于react-test-renderer的，但是它并没有对StatusBar和SafeAreaView这类非react-dom的mock，因此在渲染时会出现如下错误：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Enzyme Internal <span class="built_in">Error</span>: unknown node <span class="keyword">with</span> tag <span class="number">0</span></span><br><span class="line">  </span><br><span class="line">  at toTree (node_modules/enzyme-adapter-react<span class="number">-16.3</span>/build/ReactSixteenThreeAdapter.js:<span class="number">221</span>:<span class="number">13</span>)</span><br><span class="line">  at childrenToTree (node_modules/enzyme-adapter-react<span class="number">-16.3</span>/build/ReactSixteenThreeAdapter.js:<span class="number">234</span>:<span class="number">12</span>)</span><br><span class="line">  at toTree (node_modules/enzyme-adapter-react<span class="number">-16.3</span>/build/ReactSixteenThreeAdapter.js:<span class="number">180</span>:<span class="number">19</span>)</span><br><span class="line">  at childrenToTree (node_modules/enzyme-adapter-react<span class="number">-16.3</span>/build/ReactSixteenThreeAdapter.js:<span class="number">234</span>:<span class="number">12</span>)</span><br><span class="line">  at toTree (node_modules/enzyme-adapter-react<span class="number">-16.3</span>/build/ReactSixteenThreeAdapter.js:<span class="number">180</span>:<span class="number">19</span>)</span><br><span class="line">  at childrenToTree (node_modules/enzyme-adapter-react<span class="number">-16.3</span>/build/ReactSixteenThreeAdapter.js:<span class="number">234</span>:<span class="number">12</span>)</span><br><span class="line">  at toTree (node_modules/enzyme-adapter-react<span class="number">-16.3</span>/build/ReactSixteenThreeAdapter.js:<span class="number">180</span>:<span class="number">19</span>)</span><br><span class="line">  at <span class="built_in">Object</span>.getNode (node_modules/enzyme-adapter-react<span class="number">-16.3</span>/build/ReactSixteenThreeAdapter.js:<span class="number">348</span>:<span class="number">33</span>)</span><br><span class="line">  at <span class="keyword">new</span> ReactWrapper (node_modules/enzyme/build/ReactWrapper.js:<span class="number">136</span>:<span class="number">44</span>)</span><br><span class="line">  at mount (node_modules/enzyme/build/mount.js:<span class="number">21</span>:<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p>虽然react-native-mock-render已经帮我们做了很多基础模块的mock，但是还有一些不足</p>
+<ol>
+<li><p>与react native版本的不一致，我目前环境使用的<a href="mailto:react-native-mock-render@0.1.2" target="_blank" rel="noopener">react-native-mock-render@0.1.2</a> 和<a href="mailto:react-native@0.55.4" target="_blank" rel="noopener">react-native@0.55.4</a>，react-native-mock-render中因为缺少两个Native Module（StatusBarManager，KeyboardObserver）导致我的用例失败</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">TypeError</span>: Cannot read property <span class="string">'HEIGHT'</span> <span class="keyword">of</span> <span class="literal">undefined</span></span><br><span class="line">   </span><br><span class="line">&gt; <span class="number">1</span> | <span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line">  <span class="number">2</span> | <span class="keyword">import</span> &#123;</span><br><span class="line">  <span class="number">3</span> |   Platform,</span><br><span class="line">  <span class="number">4</span> |   Text,</span><br><span class="line">  </span><br><span class="line">  at <span class="built_in">Object</span>.&lt;anonymous&gt; (node_modules/react-native/Libraries/Components/StatusBar/StatusBar.js:<span class="number">1</span>:<span class="number">6976</span>)</span><br><span class="line">  at <span class="built_in">Object</span>.get StatusBar [<span class="keyword">as</span> StatusBar] (node_modules/react-native/Libraries/react-native/react-native-implementation.js:<span class="number">1</span>:<span class="number">1672</span>)</span><br><span class="line">  at getStatusBarHeight (node_modules/react-native-iphone-x-helper/index.js:<span class="number">1</span>:<span class="number">817</span>)</span><br><span class="line">  at <span class="built_in">Object</span>.&lt;anonymous&gt; (src/components/common/topGuideBar.js:<span class="number">1</span>:<span class="number">4122</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li><p>自定义Native Module，我们自定义的Native Module需要自己进行mock，如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">jest.mock('NativeModules', ()=&gt;(&#123;</span><br><span class="line">  //mock自己的业务module</span><br><span class="line">  RNTrackerManager:&#123;</span><br><span class="line">    startTraceEvent: jest.fn(),</span><br><span class="line">    postEvent: jest.fn(),</span><br><span class="line">    endTraceEvent: jest.fn()</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  RNComUtilManager: &#123;</span><br><span class="line">    setNavSwipe:jest.fn()</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  //mock三方库的native module</span><br><span class="line">  RNVectorIconsManager:&#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  //mock react-native的native module（react-native-mock-render缺失）</span><br><span class="line">  StatusBarManager: &#123;</span><br><span class="line">    HEIGHT:800,</span><br><span class="line">    setStyle:jest.fn(),</span><br><span class="line">    setHidden:jest.fn(),</span><br><span class="line">    setNetworkActivityIndicatorVisible:jest.fn()</span><br><span class="line">  &#125;,</span><br><span class="line">  KeyboardObserver: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="投入产出"><a href="#投入产出" class="headerlink" title="投入产出"></a>投入产出</h2><p>从上面的描述来看搭建RN项目的单元测试环境还是挺麻烦的，而且还有很多需要mock的地方，不仅是原生module，还有网络请求等，环境搭好后还有测试用例的编写，对于小团队来说，单元测试的投入产出是不是匹配成为一个值得思考的问题。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/前端-工作小结3-4-3-15/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -700,7 +854,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
