@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="One &amp;&amp; More">
 <meta property="og:description" content="背景最近在做React Native项目工程化的事，eslint代码检查，Prettier代码美化，git commit hook检查等，然后就是考虑单元测试，虽然都是前端技术栈的内容，但是因为React Native会涉及很多原生模块，在单元测试环境搭建上会比纯web端麻烦一点。 工具箱Jest+babel-jest+babel RN项目默认是使用Jest来做单元测试的，所以也没必要去找其他测试">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-22T07:12:22.000Z">
+<meta property="og:updated_time" content="2019-03-22T07:36:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReactNative单元测试从入门到放弃">
 <meta name="twitter:description" content="背景最近在做React Native项目工程化的事，eslint代码检查，Prettier代码美化，git commit hook检查等，然后就是考虑单元测试，虽然都是前端技术栈的内容，但是因为React Native会涉及很多原生模块，在单元测试环境搭建上会比纯web端麻烦一点。 工具箱Jest+babel-jest+babel RN项目默认是使用Jest来做单元测试的，所以也没必要去找其他测试">
@@ -301,7 +301,7 @@
       
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近在做React Native项目工程化的事，eslint代码检查，Prettier代码美化，git commit hook检查等，然后就是考虑单元测试，虽然都是前端技术栈的内容，但是因为React Native会涉及很多原生模块，在单元测试环境搭建上会比纯web端麻烦一点。</p>
 <h2 id="工具箱"><a href="#工具箱" class="headerlink" title="工具箱"></a>工具箱</h2><p><strong>Jest+babel-jest+babel</strong></p>
-<p>RN项目默认是使用Jest来做单元测试的，所以也没必要去找其他测试框架，就他了。RN项目的编译打包是集成在metro里面的，已达到开箱即用的目的。但是Jest框架运行的时候是直接加载js源文件的，所以需要babel编译器的帮忙。</p>
+<p>RN项目默认是使用Jest来做单元测试的，所以也没必要去找其他测试框架，就他了。RN项目的编译打包是集成在metro bundler里面的，已达到开箱即用的目的。但是Jest框架运行的时候是直接加载js源文件的，所以需要babel编译器的帮忙。</p>
 <p>babel基础配置：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//.babelrc</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"presets"</span>: [<span class="string">"react-native"</span>],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>当然可能会遇到很多js语法编译的问题，需要个别添加preset和plugin支持，比如下面的错误：</p>
