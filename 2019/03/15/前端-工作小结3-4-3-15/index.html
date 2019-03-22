@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="##利用huskey和lint-staged在git commit之前做代码检查## git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。 为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。  安装husky和lint-staged  1npm install --save">
+<meta name="description" content="##利用huskey和lint-staged在git commit之前做代码检查 git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。 为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。  安装husky和lint-staged  1npm install --save-d">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[前端]工作小结3.4-3.15">
 <meta property="og:url" content="http://yoursite.com/2019/03/15/前端-工作小结3-4-3-15/index.html">
 <meta property="og:site_name" content="One &amp;&amp; More">
-<meta property="og:description" content="##利用huskey和lint-staged在git commit之前做代码检查## git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。 为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。  安装husky和lint-staged  1npm install --save">
+<meta property="og:description" content="##利用huskey和lint-staged在git commit之前做代码检查 git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。 为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。  安装husky和lint-staged  1npm install --save-d">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/03/15/前端-工作小结3-4-3-15/D75D10C6-747E-4DC5-AFBE-7C897DDFD1EF.png">
-<meta property="og:updated_time" content="2019-03-22T07:36:38.000Z">
+<meta property="og:updated_time" content="2019-03-22T07:38:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[前端]工作小结3.4-3.15">
-<meta name="twitter:description" content="##利用huskey和lint-staged在git commit之前做代码检查## git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。 为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。  安装husky和lint-staged  1npm install --save">
+<meta name="twitter:description" content="##利用huskey和lint-staged在git commit之前做代码检查 git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。 为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。  安装husky和lint-staged  1npm install --save-d">
 <meta name="twitter:image" content="http://yoursite.com/2019/03/15/前端-工作小结3-4-3-15/D75D10C6-747E-4DC5-AFBE-7C897DDFD1EF.png">
 
 
@@ -301,7 +301,7 @@
       
 
       
-        <p>##利用huskey和lint-staged在git commit之前做代码检查##</p>
+        <p>##利用huskey和lint-staged在git commit之前做代码检查</p>
 <p>git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。</p>
 <p>为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。</p>
 <ol>
@@ -314,7 +314,7 @@
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"husky"</span>: &#123;</span><br><span class="line">    <span class="attr">"hooks"</span>: &#123;</span><br><span class="line">      <span class="attr">"pre-commit"</span>: <span class="string">"lint-staged"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"lint-staged"</span>: &#123;</span><br><span class="line">    <span class="attr">"*.&#123;js,vue&#125;"</span>: [<span class="string">"eslint --fix"</span>, <span class="string">"git add"</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>husky在install action中会替换hooks目录下的相关钩子函数，触发时转去执行package.json中配置的命名，在uninstall action中会恢复原状。</p>
 <p>lint-staged是为了提高lint的效率，只知道提交的文件进行检查。</p>
-<p>##前端代码查重–jsinspect##</p>
+<p>##前端代码查重–jsinspect</p>
 <p>重构代码时很重要的一步就是抽取通用代码，不要repeat yourself，不要ctrl-c/ctrl-v。</p>
 <p>jsinspect帮助我们快速查找项目里面的重复代码。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jsinspect -t <span class="number">50</span> --ignore <span class="string">"test"</span> ./src</span><br></pre></td></tr></table></figure>
@@ -347,7 +347,7 @@
 <p>也可以通过npm安装:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g jsinspect_support_ts</span><br></pre></td></tr></table></figure>
 <p>因为需要用到最新版本的babel，而各个项目babel版本不尽相同，为了避免迁移成本，尽量全局安装。</p>
-<p>##webpack 无用文件扫描插件##</p>
+<p>##webpack 无用文件扫描插件</p>
 <p><strong>背景：</strong>在项目开发一段时间后，项目中的文件开始变得臃肿冗余，有些相同功能的文件在重构之后也没有即时删掉，虽然webpack本身在打包时不会理会这些未被引用的文件，但在开发过程中不管是打开文件还是搜索代码都会遇到一些困惑和麻烦，所以为了保持项目整洁还是希望有一个工具可以帮忙找出无用的文件。</p>
 <p><strong>实现：</strong></p>
 <p>webpack本身做了依赖分析的工作，而且提供了强大的plugin机制可以使开发者方便的介入webpack的工作流程借助webpack的中间结果做一些自定义的任务，我们的Plugin其实很简单：</p>
