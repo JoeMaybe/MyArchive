@@ -229,6 +229,153 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/26/gitment无法通过gh-oauth-imsun-net认证/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JoeMaybe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="One && More">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/26/gitment无法通过gh-oauth-imsun-net认证/" itemprop="url">gitment无法通过gh-oauth.imsun.net认证</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-26T20:04:42+08:00">
+                2019-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天心血来潮想为github上hexo搭建的blog添加评论，网上搜了一番，主要有三个步骤：</p>
+<ol>
+<li><p>去<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">New OAuth App</a>为博客应用申请<code>ClientID</code>和<code>Client Secret</code>.</p>
+</li>
+<li><p>配置theme下面的gitment，比如我使用的<code>themes/next/_config.yml</code>:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Gitment</span></span><br><span class="line"><span class="comment"># Introduction: https://imsun.net/posts/gitment-introduction/</span></span><br><span class="line"><span class="attr">gitment:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  mint:</span> <span class="literal">true</span> <span class="comment"># RECOMMEND, A mint on Gitment, to support count, language and proxy_gateway</span></span><br><span class="line"><span class="attr">  count:</span> <span class="literal">true</span> <span class="comment"># Show comments count in post meta area</span></span><br><span class="line"><span class="attr">  lazy:</span> <span class="literal">false</span> <span class="comment"># Comments lazy loading with a button</span></span><br><span class="line"><span class="attr">  cleanly:</span> <span class="literal">false</span> <span class="comment"># Hide 'Powered by ...' on footer, and more</span></span><br><span class="line"><span class="attr">  language:</span> <span class="comment"># Force language, or auto switch by theme</span></span><br><span class="line"><span class="attr">  github_user:</span> <span class="string">&#123;you</span> <span class="string">github</span> <span class="string">user</span> <span class="string">id&#125;</span></span><br><span class="line"><span class="attr">  github_repo:</span> <span class="string">随便写一个你的公开的git仓库就行,到时候评论会作为那个项目的issue</span></span><br><span class="line"><span class="attr">  client_id:</span> <span class="string">&#123;刚才申请的ClientID&#125;</span></span><br><span class="line"><span class="attr">  client_secret:</span> <span class="string">&#123;刚才申请的Client</span> <span class="string">Secret&#125;</span></span><br><span class="line"><span class="attr">  proxy_gateway:</span> <span class="comment"># Address of api proxy, See: https://github.com/aimingoo/intersect</span></span><br><span class="line"><span class="attr">  redirect_protocol:</span> <span class="comment"># Protocol of redirect_uri with force_redirect_protocol when mint enabled</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为每一篇文章开通评论，这一步有几个问题需要注意。</p>
+<ol>
+<li><p><strong>第一次开通评论需要登录github账号</strong>，这个需要在线上环境进行，即不能在localhost上做。</p>
+</li>
+<li><p>登录完页面<strong>报错<code>[object ProgressEvent]</code></strong>因为<code>gh-oauth.imsun.net</code>链接不上。</p>
+<p>解决办法：找到themes/next/layout/_third_party/comments/gitment.swig 文件：</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> theme.gitment.mint %&#125;</span><br><span class="line">    &#123;% <span class="keyword">set</span> CommentsClass = "Gitmint" %&#125;</span><br><span class="line">    &lt;link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css"&gt;</span><br><span class="line">    &lt;script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"&gt;&lt;/script&gt;</span><br><span class="line">&#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">    &#123;% <span class="keyword">set</span> CommentsClass = "Gitment" %&#125;</span><br><span class="line">    &lt;link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"&gt;</span><br><span class="line">    &lt;script src="https://imsun.github.io/gitment/dist/gitment.browser.js"&gt;&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>​    因为src=”<a href="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js&quot;中使用的gh-oauth.imsun.net链接不上，导致无法继续。网上搜了一圈，有人搭了私服【https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token】解决这个问题，为了保证以后这个私服不要挂掉，我们直接将gitment.js内联到script里。只要将其中`gh-oauth.imsun.net`改成`https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token`。" target="_blank" rel="noopener">https://aimingoo.github.io/gitmint/dist/gitmint.browser.js&quot;中使用的gh-oauth.imsun.net链接不上，导致无法继续。网上搜了一圈，有人搭了私服【https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token】解决这个问题，为了保证以后这个私服不要挂掉，我们直接将gitment.js内联到script里。只要将其中`gh-oauth.imsun.net`改成`https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token`。</a></p>
+<p>参考链接[<a href="https://github.com/imsun/gitment/issues/170]" target="_blank" rel="noopener">https://github.com/imsun/gitment/issues/170]</a></p>
+<ol start="3">
+<li><p>下一步如果页面出现<code>Error:Validation Failed</code>,修改<code>themes/next/layout/_third-party/comments/gitment.swig</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> &#123;&#123;CommentsClass&#125;&#125;(&#123;</span><br><span class="line">     id: <span class="string">'&#123;&#123; page.date &#125;&#125;'</span>,</span><br><span class="line">     owner: <span class="string">'&#123;&#123; theme.gitment.github_user &#125;&#125;'</span>,</span><br><span class="line">     repo: <span class="string">'&#123;&#123; theme.gitment.github_repo &#125;&#125;'</span>,</span><br></pre></td></tr></table></figure>
+<p>将id: window.location.href 改为如上代码所示，因为issue的Label有长度限制,对于中文博客来说,中文标题很容易就超过长度限制。</p>
+</li>
+</ol>
+<p>参考【<a href="https://sjq597.github.io/2018/05/18/Hexo-%E4%BD%BF%E7%94%A8Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/】" target="_blank" rel="noopener">https://sjq597.github.io/2018/05/18/Hexo-%E4%BD%BF%E7%94%A8Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/】</a></p>
+</li>
+</ol>
+<p>​    </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/ReactNative单元测试从入门到放弃/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -854,7 +1001,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

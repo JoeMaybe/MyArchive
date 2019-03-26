@@ -79,19 +79,17 @@
 
 
 
-<meta name="description" content="##利用huskey和lint-staged在git commit之前做代码检查 git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。 为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。  安装husky和lint-staged  1npm install --save-d">
+<meta name="description" content="今天心血来潮想为github上hexo搭建的blog添加评论，网上搜了一番，主要有三个步骤：  去New OAuth App为博客应用申请ClientID和Client Secret.  配置theme下面的gitment，比如我使用的themes/next/_config.yml: 123456789101112131415# Gitment# Introduction: https://ims">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[前端Vue]工作小结3.4-3.15">
-<meta property="og:url" content="http://yoursite.com/2019/03/15/前端-工作小结3-4-3-15/index.html">
+<meta property="og:title" content="gitment无法通过gh-oauth.imsun.net认证">
+<meta property="og:url" content="http://yoursite.com/2019/03/26/gitment无法通过gh-oauth-imsun-net认证/index.html">
 <meta property="og:site_name" content="One &amp;&amp; More">
-<meta property="og:description" content="##利用huskey和lint-staged在git commit之前做代码检查 git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。 为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。  安装husky和lint-staged  1npm install --save-d">
+<meta property="og:description" content="今天心血来潮想为github上hexo搭建的blog添加评论，网上搜了一番，主要有三个步骤：  去New OAuth App为博客应用申请ClientID和Client Secret.  配置theme下面的gitment，比如我使用的themes/next/_config.yml: 123456789101112131415# Gitment# Introduction: https://ims">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/03/15/前端-工作小结3-4-3-15/D75D10C6-747E-4DC5-AFBE-7C897DDFD1EF.png">
-<meta property="og:updated_time" content="2019-03-22T07:39:54.000Z">
+<meta property="og:updated_time" content="2019-03-26T12:32:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[前端Vue]工作小结3.4-3.15">
-<meta name="twitter:description" content="##利用huskey和lint-staged在git commit之前做代码检查 git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。 为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。  安装husky和lint-staged  1npm install --save-d">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/15/前端-工作小结3-4-3-15/D75D10C6-747E-4DC5-AFBE-7C897DDFD1EF.png">
+<meta name="twitter:title" content="gitment无法通过gh-oauth.imsun.net认证">
+<meta name="twitter:description" content="今天心血来潮想为github上hexo搭建的blog添加评论，网上搜了一番，主要有三个步骤：  去New OAuth App为博客应用申请ClientID和Client Secret.  配置theme下面的gitment，比如我使用的themes/next/_config.yml: 123456789101112131415# Gitment# Introduction: https://ims">
 
 
 
@@ -121,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/15/前端-工作小结3-4-3-15/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/26/gitment无法通过gh-oauth-imsun-net认证/">
 
 
 
 
 
-  <title>[前端Vue]工作小结3.4-3.15 | One && More</title>
+  <title>gitment无法通过gh-oauth.imsun.net认证 | One && More</title>
   
 
 
@@ -234,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/前端-工作小结3-4-3-15/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/26/gitment无法通过gh-oauth-imsun-net认证/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JoeMaybe">
@@ -251,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[前端Vue]工作小结3.4-3.15</h1>
+          <h1 class="post-title" itemprop="name headline">gitment无法通过gh-oauth.imsun.net认证</h1>
         
 
         <div class="post-meta">
@@ -263,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-15T13:27:48+08:00">
-                2019-03-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-26T20:04:42+08:00">
+                2019-03-26
               </time>
             
 
@@ -282,8 +280,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/15/前端-工作小结3-4-3-15/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/03/15/前端-工作小结3-4-3-15/" itemprop="commentsCount"></span>
+                <a href="/2019/03/26/gitment无法通过gh-oauth-imsun-net认证/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/03/26/gitment无法通过gh-oauth-imsun-net认证/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -311,63 +309,34 @@
       
 
       
-        <p>##利用huskey和lint-staged在git commit之前做代码检查</p>
-<p>git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。</p>
-<p>为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。</p>
+        <p>今天心血来潮想为github上hexo搭建的blog添加评论，网上搜了一番，主要有三个步骤：</p>
 <ol>
-<li>安装husky和lint-staged</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev husky lint-staged</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>配置package.json</li>
-</ol>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"husky"</span>: &#123;</span><br><span class="line">    <span class="attr">"hooks"</span>: &#123;</span><br><span class="line">      <span class="attr">"pre-commit"</span>: <span class="string">"lint-staged"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"lint-staged"</span>: &#123;</span><br><span class="line">    <span class="attr">"*.&#123;js,vue&#125;"</span>: [<span class="string">"eslint --fix"</span>, <span class="string">"git add"</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>husky在install action中会替换hooks目录下的相关钩子函数，触发时转去执行package.json中配置的命名，在uninstall action中会恢复原状。</p>
-<p>lint-staged是为了提高lint的效率，只知道提交的文件进行检查。</p>
-<p>##前端代码查重–jsinspect</p>
-<p>重构代码时很重要的一步就是抽取通用代码，不要repeat yourself，不要ctrl-c/ctrl-v。</p>
-<p>jsinspect帮助我们快速查找项目里面的重复代码。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jsinspect -t <span class="number">50</span> --ignore <span class="string">"test"</span> ./src</span><br></pre></td></tr></table></figure>
-<p>参数解析：</p>
-<ul>
-<li><p><strong>Threshold</strong> indicates the minimum number of nodes to analyze.</p>
-<ul>
-<li><strong>Identifiers</strong> indicates whether or not the nodes in a match should also havematching identifiers</li>
-<li><strong>literals</strong>  means whether or not literal values should match</li>
-<li><strong>minInstances</strong> specifies the min number of instances for a match</li>
-</ul>
+<li><p>去<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">New OAuth App</a>为博客应用申请<code>ClientID</code>和<code>Client Secret</code>.</p>
 </li>
-</ul>
-<p>jsinspect的基本思路如下图所示：</p>
-<p><img src="/2019/03/15/前端-工作小结3-4-3-15/D75D10C6-747E-4DC5-AFBE-7C897DDFD1EF.png" alt="D75D10C6-747E-4DC5-AFBE-7C897DDFD1EF"></p>
-<p>首先通过对每个文件通过babel parser生成AST，对AST进行深度遍历保存下nodes全序列。根据设定的threashold值遍历所有满足条件的node子序列，它们就是要匹配的潜在对象，每一个子序列生成一个key，计算方法就是n个node的type和length相连接。对相同key值的子序列聚合得到相应的matches。</p>
-<p>jsinspect官方源的babel parser是6.x版本的，所以只支持js，jsx和flow的translate，而我们项目里有很多ts，也需要支持。babel 7开始支持typescript，所以需要对jsinspect稍作修改。</p>
+<li><p>配置theme下面的gitment，比如我使用的<code>themes/next/_config.yml</code>:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Gitment</span></span><br><span class="line"><span class="comment"># Introduction: https://imsun.net/posts/gitment-introduction/</span></span><br><span class="line"><span class="attr">gitment:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  mint:</span> <span class="literal">true</span> <span class="comment"># RECOMMEND, A mint on Gitment, to support count, language and proxy_gateway</span></span><br><span class="line"><span class="attr">  count:</span> <span class="literal">true</span> <span class="comment"># Show comments count in post meta area</span></span><br><span class="line"><span class="attr">  lazy:</span> <span class="literal">false</span> <span class="comment"># Comments lazy loading with a button</span></span><br><span class="line"><span class="attr">  cleanly:</span> <span class="literal">false</span> <span class="comment"># Hide 'Powered by ...' on footer, and more</span></span><br><span class="line"><span class="attr">  language:</span> <span class="comment"># Force language, or auto switch by theme</span></span><br><span class="line"><span class="attr">  github_user:</span> <span class="string">&#123;you</span> <span class="string">github</span> <span class="string">user</span> <span class="string">id&#125;</span></span><br><span class="line"><span class="attr">  github_repo:</span> <span class="string">随便写一个你的公开的git仓库就行,到时候评论会作为那个项目的issue</span></span><br><span class="line"><span class="attr">  client_id:</span> <span class="string">&#123;刚才申请的ClientID&#125;</span></span><br><span class="line"><span class="attr">  client_secret:</span> <span class="string">&#123;刚才申请的Client</span> <span class="string">Secret&#125;</span></span><br><span class="line"><span class="attr">  proxy_gateway:</span> <span class="comment"># Address of api proxy, See: https://github.com/aimingoo/intersect</span></span><br><span class="line"><span class="attr">  redirect_protocol:</span> <span class="comment"># Protocol of redirect_uri with force_redirect_protocol when mint enabled</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为每一篇文章开通评论，这一步有几个问题需要注意。</p>
 <ol>
-<li><p>package.json</p>
-<p>“babylon”: “6.16.1”    =&gt;    “@babel/parser”: “^7.3.4”,</p>
+<li><p><strong>第一次开通评论需要登录github账号</strong>，这个需要在线上环境进行，即不能在localhost上做。</p>
 </li>
-<li><p>bin/jsinspect</p>
-<p>var extensions = [‘.js’, ‘.jsx’, ‘.ts’]; //增加ts支持</p>
-</li>
-<li><p>lib/parser</p>
-<p>将plugins中的flow替换成typescript，两者不能同时支持</p>
+<li><p>登录完页面<strong>报错<code>[object ProgressEvent]</code></strong>因为<code>gh-oauth.imsun.net</code>链接不上。</p>
+<p>解决办法：找到themes/next/layout/_third_party/comments/gitment.swig 文件：</p>
 </li>
 </ol>
-<p>详细的见<a href="https://github.com/JoeMaybe/jsinspect/tree/feature_ts_support" target="_blank" rel="noopener">https://github.com/JoeMaybe/jsinspect/tree/feature_ts_support</a></p>
-<p>也可以通过npm安装:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g jsinspect_support_ts</span><br></pre></td></tr></table></figure>
-<p>因为需要用到最新版本的babel，而各个项目babel版本不尽相同，为了避免迁移成本，尽量全局安装。</p>
-<p>##webpack 无用文件扫描插件</p>
-<p><strong>背景：</strong>在项目开发一段时间后，项目中的文件开始变得臃肿冗余，有些相同功能的文件在重构之后也没有即时删掉，虽然webpack本身在打包时不会理会这些未被引用的文件，但在开发过程中不管是打开文件还是搜索代码都会遇到一些困惑和麻烦，所以为了保持项目整洁还是希望有一个工具可以帮忙找出无用的文件。</p>
-<p><strong>实现：</strong></p>
-<p>webpack本身做了依赖分析的工作，而且提供了强大的plugin机制可以使开发者方便的介入webpack的工作流程借助webpack的中间结果做一些自定义的任务，我们的Plugin其实很简单：</p>
-<ol>
-<li>首先遍历src文件夹下所有的文件</li>
-<li>拿到webpack已经生成的依赖列表</li>
-<li>只要不在webpack依赖列表中可以认为就是无用文件</li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> theme.gitment.mint %&#125;</span><br><span class="line">    &#123;% <span class="keyword">set</span> CommentsClass = "Gitmint" %&#125;</span><br><span class="line">    &lt;link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css"&gt;</span><br><span class="line">    &lt;script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"&gt;&lt;/script&gt;</span><br><span class="line">&#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">    &#123;% <span class="keyword">set</span> CommentsClass = "Gitment" %&#125;</span><br><span class="line">    &lt;link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"&gt;</span><br><span class="line">    &lt;script src="https://imsun.github.io/gitment/dist/gitment.browser.js"&gt;&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>​    因为src=”<a href="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js&quot;中使用的gh-oauth.imsun.net链接不上，导致无法继续。网上搜了一圈，有人搭了私服【https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token】解决这个问题，为了保证以后这个私服不要挂掉，我们直接将gitment.js内联到script里。只要将其中`gh-oauth.imsun.net`改成`https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token`。" target="_blank" rel="noopener">https://aimingoo.github.io/gitmint/dist/gitmint.browser.js&quot;中使用的gh-oauth.imsun.net链接不上，导致无法继续。网上搜了一圈，有人搭了私服【https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token】解决这个问题，为了保证以后这个私服不要挂掉，我们直接将gitment.js内联到script里。只要将其中`gh-oauth.imsun.net`改成`https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token`。</a></p>
+<p>参考链接[<a href="https://github.com/imsun/gitment/issues/170]" target="_blank" rel="noopener">https://github.com/imsun/gitment/issues/170]</a></p>
+<ol start="3">
+<li><p>下一步如果页面出现<code>Error:Validation Failed</code>,修改<code>themes/next/layout/_third-party/comments/gitment.swig</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> &#123;&#123;CommentsClass&#125;&#125;(&#123;</span><br><span class="line">     id: <span class="string">'&#123;&#123; page.date &#125;&#125;'</span>,</span><br><span class="line">     owner: <span class="string">'&#123;&#123; theme.gitment.github_user &#125;&#125;'</span>,</span><br><span class="line">     repo: <span class="string">'&#123;&#123; theme.gitment.github_repo &#125;&#125;'</span>,</span><br></pre></td></tr></table></figure>
+<p>将id: window.location.href 改为如上代码所示，因为issue的Label有长度限制,对于中文博客来说,中文标题很容易就超过长度限制。</p>
+</li>
 </ol>
-<p>具体代码如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>)</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UnusedFilesPlugin</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.options = options;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isNodeModulePath</span>(<span class="params"> path </span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> !!(</span><br><span class="line">        !path ||</span><br><span class="line">        path.toString().indexOf( <span class="string">'node_modules'</span> ) &gt; <span class="number">-1</span> ||</span><br><span class="line">        path.toString().indexOf( <span class="string">'./~/'</span> ) &gt; <span class="number">-1</span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readDirSync</span>(<span class="params">dir, result</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'walk dir: '</span>+dir + <span class="built_in">JSON</span>.stringify(result))</span><br><span class="line">  <span class="keyword">var</span> pa = fs.readdirSync(dir, result);</span><br><span class="line">  pa.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">ele,index</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> cur = path.join(dir,ele)</span><br><span class="line">    <span class="keyword">var</span> info = fs.statSync(cur)  </span><br><span class="line">    <span class="keyword">if</span>(info.isDirectory())&#123;</span><br><span class="line">      readDirSync(cur, result);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      result.push(cur)</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">UnusedFilesPlugin.prototype.apply = <span class="function"><span class="keyword">function</span>(<span class="params">compiler</span>) </span>&#123;</span><br><span class="line">  compiler.plugin(<span class="string">'emit'</span>, (compilation, callback) =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'UnusedFilesPlugin is running =========='</span>);</span><br><span class="line">      <span class="keyword">var</span> allFiles = [];</span><br><span class="line">      <span class="keyword">var</span> dependency = &#123;&#125;;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">var</span> root = path.join(__dirname,<span class="string">'../'</span>, <span class="keyword">this</span>.options.srcDir)</span><br><span class="line">      readDirSync(root,allFiles);</span><br><span class="line"></span><br><span class="line">      compilation.fileDependencies.filter(<span class="function"><span class="params">filepath</span> =&gt;</span> !isNodeModulePath( filepath )).map(<span class="function"><span class="params">filepath</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'file dependency: '</span>+filepath);</span><br><span class="line">        dependency[filepath] = <span class="literal">true</span>;</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> unused = [];</span><br><span class="line">      allFiles.map(<span class="function"><span class="params">file</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!dependency[file])</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">"found unused file : "</span>+file)</span><br><span class="line">          unused.push(file)</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      fs.writeFile(<span class="string">'./unused_files.json'</span>, <span class="built_in">JSON</span>.stringify(&#123;<span class="string">'total'</span>:unused.length, <span class="string">'fileList'</span>:unused&#125;), (err) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'写入文件操作失败'</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'写入文件操作成功'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'UnusedFilesPlugin is done =========='</span>);</span><br><span class="line">      callback()</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = UnusedFilesPlugin;</span><br></pre></td></tr></table></figure>
+<p>参考【<a href="https://sjq597.github.io/2018/05/18/Hexo-%E4%BD%BF%E7%94%A8Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/】" target="_blank" rel="noopener">https://sjq597.github.io/2018/05/18/Hexo-%E4%BD%BF%E7%94%A8Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/】</a></p>
+</li>
+</ol>
+<p>​    </p>
 
       
     </div>
@@ -392,8 +361,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/19/react-composite-inheritance/" rel="next" title="React基础：组合 vs 继承">
-                <i class="fa fa-chevron-left"></i> React基础：组合 vs 继承
+              <a href="/2019/03/22/ReactNative单元测试从入门到放弃/" rel="next" title="ReactNative单元测试从入门到放弃">
+                <i class="fa fa-chevron-left"></i> ReactNative单元测试从入门到放弃
               </a>
             
           </div>
@@ -401,10 +370,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/22/ReactNative单元测试从入门到放弃/" rel="prev" title="ReactNative单元测试从入门到放弃">
-                ReactNative单元测试从入门到放弃 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -5240,7 +5205,7 @@ exports.default = english;
       <script type="text/javascript">
       function renderGitment(){
         var gitment = new Gitmint({
-            id: '1552627668000', 
+            id: '1553601882000', 
             owner: 'JoeMaybe',
             repo: 'joemaybe.github.io',
             
