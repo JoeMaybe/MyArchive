@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/26/gitment无法通过gh-oauth-imsun-net认证/" itemprop="url">gitment无法通过gh-oauth.imsun.net认证</a></h1>
+                <a class="post-title-link" href="/2019/03/26/gitment无法通过gh-oauth-imsun-net认证/" itemprop="url">Hexo添加评论组件gitment</a></h1>
         
 
         <div class="post-meta">
@@ -301,32 +301,29 @@
         
           
             <p>今天心血来潮想为github上hexo搭建的blog添加评论，网上搜了一番，主要有三个步骤：</p>
-<ol>
-<li><p>去<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">New OAuth App</a>为博客应用申请<code>ClientID</code>和<code>Client Secret</code>.</p>
-</li>
-<li><p>配置theme下面的gitment，比如我使用的<code>themes/next/_config.yml</code>:</p>
+<h2 id="应用Auth认证"><a href="#应用Auth认证" class="headerlink" title="应用Auth认证"></a>应用Auth认证</h2><p>去<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">New OAuth App</a>为博客应用申请<code>ClientID</code>和<code>Client Secret</code>.</p>
+<h2 id="gitment开启配置"><a href="#gitment开启配置" class="headerlink" title="gitment开启配置"></a>gitment开启配置</h2><p>配置theme下面的gitment，比如我使用的<code>themes/next/_config.yml</code>:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Gitment</span></span><br><span class="line"><span class="comment"># Introduction: https://imsun.net/posts/gitment-introduction/</span></span><br><span class="line"><span class="attr">gitment:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  mint:</span> <span class="literal">true</span> <span class="comment"># RECOMMEND, A mint on Gitment, to support count, language and proxy_gateway</span></span><br><span class="line"><span class="attr">  count:</span> <span class="literal">true</span> <span class="comment"># Show comments count in post meta area</span></span><br><span class="line"><span class="attr">  lazy:</span> <span class="literal">false</span> <span class="comment"># Comments lazy loading with a button</span></span><br><span class="line"><span class="attr">  cleanly:</span> <span class="literal">false</span> <span class="comment"># Hide 'Powered by ...' on footer, and more</span></span><br><span class="line"><span class="attr">  language:</span> <span class="comment"># Force language, or auto switch by theme</span></span><br><span class="line"><span class="attr">  github_user:</span> <span class="string">&#123;you</span> <span class="string">github</span> <span class="string">user</span> <span class="string">id&#125;</span></span><br><span class="line"><span class="attr">  github_repo:</span> <span class="string">随便写一个你的公开的git仓库就行,到时候评论会作为那个项目的issue</span></span><br><span class="line"><span class="attr">  client_id:</span> <span class="string">&#123;刚才申请的ClientID&#125;</span></span><br><span class="line"><span class="attr">  client_secret:</span> <span class="string">&#123;刚才申请的Client</span> <span class="string">Secret&#125;</span></span><br><span class="line"><span class="attr">  proxy_gateway:</span> <span class="comment"># Address of api proxy, See: https://github.com/aimingoo/intersect</span></span><br><span class="line"><span class="attr">  redirect_protocol:</span> <span class="comment"># Protocol of redirect_uri with force_redirect_protocol when mint enabled</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>为每一篇文章开通评论，这一步有几个问题需要注意。</p>
+<h2 id="评论组件初始化"><a href="#评论组件初始化" class="headerlink" title="评论组件初始化"></a>评论组件初始化</h2><p>为每一篇文章开通评论，这一步有几个问题需要注意。</p>
 <ol>
-<li><p><strong>第一次开通评论需要登录github账号</strong>，这个需要在线上环境进行，即不能在localhost上做。</p>
+<li><p>第一次开通评论需要登录github账号，这个需要在<strong>线上环境</strong>进行，不能在localhost上做。</p>
 </li>
-<li><p>登录完页面<strong>报错<code>[object ProgressEvent]</code></strong>因为<code>gh-oauth.imsun.net</code>链接不上。</p>
+<li><p>登录完页面报错<code>[object ProgressEvent]</code>因为<code>gh-oauth.imsun.net</code>链接不上。</p>
+</li>
+</ol>
 <p>解决办法：找到themes/next/layout/_third_party/comments/gitment.swig 文件：</p>
-</li>
-</ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> theme.gitment.mint %&#125;</span><br><span class="line">    &#123;% <span class="keyword">set</span> CommentsClass = "Gitmint" %&#125;</span><br><span class="line">    &lt;link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css"&gt;</span><br><span class="line">    &lt;script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"&gt;&lt;/script&gt;</span><br><span class="line">&#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">    &#123;% <span class="keyword">set</span> CommentsClass = "Gitment" %&#125;</span><br><span class="line">    &lt;link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"&gt;</span><br><span class="line">    &lt;script src="https://imsun.github.io/gitment/dist/gitment.browser.js"&gt;&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<p>​    因为src=”<a href="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js&quot;中使用的gh-oauth.imsun.net链接不上，导致无法继续。网上搜了一圈，有人搭了私服【https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token】解决这个问题，为了保证以后这个私服不要挂掉，我们直接将gitment.js内联到script里。只要将其中`gh-oauth.imsun.net`改成`https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token`。" target="_blank" rel="noopener">https://aimingoo.github.io/gitmint/dist/gitmint.browser.js&quot;中使用的gh-oauth.imsun.net链接不上，导致无法继续。网上搜了一圈，有人搭了私服【https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token】解决这个问题，为了保证以后这个私服不要挂掉，我们直接将gitment.js内联到script里。只要将其中`gh-oauth.imsun.net`改成`https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token`。</a></p>
-<p>参考链接[<a href="https://github.com/imsun/gitment/issues/170]" target="_blank" rel="noopener">https://github.com/imsun/gitment/issues/170]</a></p>
+<p>因为<code>src=https://aimingoo.github.io/gitmint/dist/gitmint.browser.js</code>中使用的<code>gh-oauth.imsun.net</code>链接不上，导致无法继续。网上搜了一圈，有人搭了私服<code>https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token</code>解决这个问题，为了保证以后这个私服不要挂掉，我们直接将gitment.js内联到script里。只要将其中<code>gh-oauth.imsun.net</code>改成<code>https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token</code>。</p>
 <ol start="3">
-<li><p>下一步如果页面出现<code>Error:Validation Failed</code>,修改<code>themes/next/layout/_third-party/comments/gitment.swig</code>:</p>
+<li>下一步如果页面出现<code>Error:Validation Failed</code>,修改<code>themes/next/layout/_third-party/comments/gitment.swig</code>:</li>
+</ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> &#123;&#123;CommentsClass&#125;&#125;(&#123;</span><br><span class="line">     id: <span class="string">'&#123;&#123; page.date &#125;&#125;'</span>,</span><br><span class="line">     owner: <span class="string">'&#123;&#123; theme.gitment.github_user &#125;&#125;'</span>,</span><br><span class="line">     repo: <span class="string">'&#123;&#123; theme.gitment.github_repo &#125;&#125;'</span>,</span><br></pre></td></tr></table></figure>
-<p>将id: window.location.href 改为如上代码所示，因为issue的Label有长度限制,对于中文博客来说,中文标题很容易就超过长度限制。</p>
-</li>
+<p>将<code>id: window.location.href</code>改为如上代码所示，因为issue的Label有长度限制,对于中文博客来说,中文标题很容易就超过长度限制。</p>
+<ol start="4">
+<li>One more thing, 如果修改没有效果，尝试清一下浏览器缓存～</li>
 </ol>
-<p>参考【<a href="https://sjq597.github.io/2018/05/18/Hexo-%E4%BD%BF%E7%94%A8Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/】" target="_blank" rel="noopener">https://sjq597.github.io/2018/05/18/Hexo-%E4%BD%BF%E7%94%A8Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/】</a></p>
-</li>
-</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://github.com/imsun/gitment/issues/170" target="_blank" rel="noopener">参考链接1</a></p>
+<p><a href="https://sjq597.github.io/2018/05/18/Hexo-%E4%BD%BF%E7%94%A8Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/" target="_blank" rel="noopener">参考链接2</a></p>
 <p>​    </p>
 
           
@@ -601,8 +598,7 @@
       
         
           
-            <p>##利用huskey和lint-staged在git commit之前做代码检查</p>
-<p>git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。</p>
+            <h2 id="利用husky和lint-staged在git-commit之前做代码检查"><a href="#利用husky和lint-staged在git-commit之前做代码检查" class="headerlink" title="利用husky和lint-staged在git commit之前做代码检查"></a>利用husky和lint-staged在git commit之前做代码检查</h2><p>git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。</p>
 <p>为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。</p>
 <ol>
 <li>安装husky和lint-staged</li>
@@ -614,8 +610,7 @@
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"husky"</span>: &#123;</span><br><span class="line">    <span class="attr">"hooks"</span>: &#123;</span><br><span class="line">      <span class="attr">"pre-commit"</span>: <span class="string">"lint-staged"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"lint-staged"</span>: &#123;</span><br><span class="line">    <span class="attr">"*.&#123;js,vue&#125;"</span>: [<span class="string">"eslint --fix"</span>, <span class="string">"git add"</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>husky在install action中会替换hooks目录下的相关钩子函数，触发时转去执行package.json中配置的命名，在uninstall action中会恢复原状。</p>
 <p>lint-staged是为了提高lint的效率，只知道提交的文件进行检查。</p>
-<p>##前端代码查重–jsinspect</p>
-<p>重构代码时很重要的一步就是抽取通用代码，不要repeat yourself，不要ctrl-c/ctrl-v。</p>
+<h2 id="前端代码查重jsinspect"><a href="#前端代码查重jsinspect" class="headerlink" title="前端代码查重jsinspect"></a>前端代码查重jsinspect</h2><p>重构代码时很重要的一步就是抽取通用代码，不要repeat yourself，不要ctrl-c/ctrl-v。</p>
 <p>jsinspect帮助我们快速查找项目里面的重复代码。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jsinspect -t <span class="number">50</span> --ignore <span class="string">"test"</span> ./src</span><br></pre></td></tr></table></figure>
 <p>参数解析：</p>
@@ -647,8 +642,7 @@
 <p>也可以通过npm安装:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g jsinspect_support_ts</span><br></pre></td></tr></table></figure>
 <p>因为需要用到最新版本的babel，而各个项目babel版本不尽相同，为了避免迁移成本，尽量全局安装。</p>
-<p>##webpack 无用文件扫描插件</p>
-<p><strong>背景：</strong>在项目开发一段时间后，项目中的文件开始变得臃肿冗余，有些相同功能的文件在重构之后也没有即时删掉，虽然webpack本身在打包时不会理会这些未被引用的文件，但在开发过程中不管是打开文件还是搜索代码都会遇到一些困惑和麻烦，所以为了保持项目整洁还是希望有一个工具可以帮忙找出无用的文件。</p>
+<h2 id="webpack无用文件扫描插件"><a href="#webpack无用文件扫描插件" class="headerlink" title="webpack无用文件扫描插件"></a>webpack无用文件扫描插件</h2><p>背景：**在项目开发一段时间后，项目中的文件开始变得臃肿冗余，有些相同功能的文件在重构之后也没有即时删掉，虽然webpack本身在打包时不会理会这些未被引用的文件，但在开发过程中不管是打开文件还是搜索代码都会遇到一些困惑和麻烦，所以为了保持项目整洁还是希望有一个工具可以帮忙找出无用的文件。</p>
 <p><strong>实现：</strong></p>
 <p>webpack本身做了依赖分析的工作，而且提供了强大的plugin机制可以使开发者方便的介入webpack的工作流程借助webpack的中间结果做一些自定义的任务，我们的Plugin其实很简单：</p>
 <ol>
@@ -910,11 +904,11 @@
           
             <h2 id="认识Javascript的类"><a href="#认识Javascript的类" class="headerlink" title="认识Javascript的类"></a>认识Javascript的类</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name, passwordHash</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.password = passwordHash;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">User.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"[User "</span> + <span class="keyword">this</span>.name + <span class="string">"]"</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">User.prototype.checkPassword = <span class="function"><span class="keyword">function</span>(<span class="params">password</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> hash(password) === <span class="keyword">this</span>.passwordHash;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p><strong>Javascript中的类本质上是一个构造函数（User）与一个用于在该类（User.prototype）实例间共享方法的原型对象的结合</strong></p>
-<p><img src="/2019/02/19/js-class-inheritance/DEEECAF9-F151-4566-9B8A-A4E09687B137.png" alt="DEEECAF9-F151-4566-9B8A-A4E09687B137"></p>
+<p><img src="/2019/02/19/js-class-inheritance/DEEECAF9-F151-4566-9B8A-A4E09687B137.png" style="zoom:50%"></p>
 <p>在JS中，函数本身也是一个对象，prototype是它的一个属性，称为对象原型，其本质也是一个对象，包含constructor和其他属性成员。constructor默认指向自身构造函数。 当我们使用new操作符创建User的实例时，产生的对象u得到了自动分配的原型对象，该原型对象被存储在User.prototype中。实例对象u根据prototype.constructor 所指向的构造函数进行实例初始化。</p>
 <h2 id="认识Javascript的继承"><a href="#认识Javascript的继承" class="headerlink" title="认识Javascript的继承"></a>认识Javascript的继承</h2><p>Javascript里面的继承是利用原型链来实现的，比如我们管理员Administrator继承自User：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Administrator</span>(<span class="params">name, passwordHash</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//将原型的实例属性变成自身的实例属性</span></span><br><span class="line">    User.call(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Administrator.prototype = <span class="built_in">Object</span>.create(User.prototype)</span><br><span class="line">Administrator.prototype.constructor = Administrator;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Object.create只有在ES5环境中才有效</span></span><br><span class="line"><span class="comment">//if (typeof Object.create === 'undefined') &#123;</span></span><br><span class="line"><span class="comment">//    Object.create = function(prototype)&#123;</span></span><br><span class="line"><span class="comment">//        function C() &#123;&#125;</span></span><br><span class="line"><span class="comment">//        C.prototype = prototype;</span></span><br><span class="line"><span class="comment">//        return new C();</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2019/02/19/js-class-inheritance/075B63FC-C989-4AED-B6AC-07357FC10102.png" alt="075B63FC-C989-4AED-B6AC-07357FC10102"></p>
+<p><img src="/2019/02/19/js-class-inheritance/075B63FC-C989-4AED-B6AC-07357FC10102.png" style="zoom:50%"></p>
 <p>Administrator构造函数里通过User.call(this)将继承来的name和password属性变成自己的实例属性，而原型属性toString和checkPassword将通过原型链查找在User.prototype中找到。</p>
 <h2 id="ES6下的语法"><a href="#ES6下的语法" class="headerlink" title="ES6下的语法"></a>ES6下的语法</h2><p><strong>ES6方式：用class关键字定义对象类型，用extends关键字实现继承</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name, passwordHash)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.passwordHash = passwordHash;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    toString() &#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="string">"[User "</span> + <span class="keyword">this</span>.name + <span class="string">"]"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	checkPassword(password) &#123;</span><br><span class="line">    	<span class="keyword">return</span> hash(password) === <span class="keyword">this</span>.passwordHash;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Administrator</span> <span class="keyword">extends</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name, passwordHash)&#123;</span><br><span class="line">        <span class="keyword">super</span>(name, passwordHash)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
