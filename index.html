@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next muse use-motion" lang>
+<html class="theme-next gemini" lang>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -93,12 +91,12 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: 'Author'
@@ -183,6 +181,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
           </a>
         </li>
       
@@ -299,34 +307,15 @@
 
       
         
-          
-            <p>今天心血来潮想为github上hexo搭建的blog添加评论，网上搜了一番，主要有三个步骤：</p>
+          <p>今天心血来潮想为github上hexo搭建的blog添加评论，网上搜了一番，主要有三个步骤：</p>
 <h2 id="应用Auth认证"><a href="#应用Auth认证" class="headerlink" title="应用Auth认证"></a>应用Auth认证</h2><p>去<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">New OAuth App</a>为博客应用申请<code>ClientID</code>和<code>Client Secret</code>.</p>
-<h2 id="gitment开启配置"><a href="#gitment开启配置" class="headerlink" title="gitment开启配置"></a>gitment开启配置</h2><p>配置theme下面的gitment，比如我使用的<code>themes/next/_config.yml</code>:</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Gitment</span></span><br><span class="line"><span class="comment"># Introduction: https://imsun.net/posts/gitment-introduction/</span></span><br><span class="line"><span class="attr">gitment:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  mint:</span> <span class="literal">true</span> <span class="comment"># RECOMMEND, A mint on Gitment, to support count, language and proxy_gateway</span></span><br><span class="line"><span class="attr">  count:</span> <span class="literal">true</span> <span class="comment"># Show comments count in post meta area</span></span><br><span class="line"><span class="attr">  lazy:</span> <span class="literal">false</span> <span class="comment"># Comments lazy loading with a button</span></span><br><span class="line"><span class="attr">  cleanly:</span> <span class="literal">false</span> <span class="comment"># Hide 'Powered by ...' on footer, and more</span></span><br><span class="line"><span class="attr">  language:</span> <span class="comment"># Force language, or auto switch by theme</span></span><br><span class="line"><span class="attr">  github_user:</span> <span class="string">&#123;you</span> <span class="string">github</span> <span class="string">user</span> <span class="string">id&#125;</span></span><br><span class="line"><span class="attr">  github_repo:</span> <span class="string">随便写一个你的公开的git仓库就行,到时候评论会作为那个项目的issue</span></span><br><span class="line"><span class="attr">  client_id:</span> <span class="string">&#123;刚才申请的ClientID&#125;</span></span><br><span class="line"><span class="attr">  client_secret:</span> <span class="string">&#123;刚才申请的Client</span> <span class="string">Secret&#125;</span></span><br><span class="line"><span class="attr">  proxy_gateway:</span> <span class="comment"># Address of api proxy, See: https://github.com/aimingoo/intersect</span></span><br><span class="line"><span class="attr">  redirect_protocol:</span> <span class="comment"># Protocol of redirect_uri with force_redirect_protocol when mint enabled</span></span><br></pre></td></tr></table></figure>
-<h2 id="评论组件初始化"><a href="#评论组件初始化" class="headerlink" title="评论组件初始化"></a>评论组件初始化</h2><p>为每一篇文章开通评论，这一步有几个问题需要注意。</p>
-<ol>
-<li><p>第一次开通评论需要登录github账号，这个需要在<strong>线上环境</strong>进行，不能在localhost上做。</p>
-</li>
-<li><p>登录完页面报错<code>[object ProgressEvent]</code>因为<code>gh-oauth.imsun.net</code>链接不上。</p>
-</li>
-</ol>
-<p>解决办法：找到themes/next/layout/_third_party/comments/gitment.swig 文件：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> theme.gitment.mint %&#125;</span><br><span class="line">    &#123;% <span class="keyword">set</span> CommentsClass = "Gitmint" %&#125;</span><br><span class="line">    &lt;link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css"&gt;</span><br><span class="line">    &lt;script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"&gt;&lt;/script&gt;</span><br><span class="line">&#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">    &#123;% <span class="keyword">set</span> CommentsClass = "Gitment" %&#125;</span><br><span class="line">    &lt;link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"&gt;</span><br><span class="line">    &lt;script src="https://imsun.github.io/gitment/dist/gitment.browser.js"&gt;&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<p>因为<code>src=https://aimingoo.github.io/gitmint/dist/gitmint.browser.js</code>中使用的<code>gh-oauth.imsun.net</code>链接不上，导致无法继续。网上搜了一圈，有人搭了私服<code>https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token</code>解决这个问题，为了保证以后这个私服不要挂掉，我们直接将gitment.js内联到script里。只要将其中<code>gh-oauth.imsun.net</code>改成<code>https://cors.wenjunjiang.win/?remoteUrl=https://github.com/login/oauth/access_token</code>。</p>
-<ol start="3">
-<li>下一步如果页面出现<code>Error:Validation Failed</code>,修改<code>themes/next/layout/_third-party/comments/gitment.swig</code>:</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> &#123;&#123;CommentsClass&#125;&#125;(&#123;</span><br><span class="line">     id: <span class="string">'&#123;&#123; page.date &#125;&#125;'</span>,</span><br><span class="line">     owner: <span class="string">'&#123;&#123; theme.gitment.github_user &#125;&#125;'</span>,</span><br><span class="line">     repo: <span class="string">'&#123;&#123; theme.gitment.github_repo &#125;&#125;'</span>,</span><br></pre></td></tr></table></figure>
-<p>将<code>id: window.location.href</code>改为如上代码所示，因为issue的Label有长度限制,对于中文博客来说,中文标题很容易就超过长度限制。</p>
-<ol start="4">
-<li>One more thing, 如果修改没有效果，尝试清一下浏览器缓存～</li>
-</ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://github.com/imsun/gitment/issues/170" target="_blank" rel="noopener">参考链接1</a></p>
-<p><a href="https://sjq597.github.io/2018/05/18/Hexo-%E4%BD%BF%E7%94%A8Gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/" target="_blank" rel="noopener">参考链接2</a></p>
-<p>​    </p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/26/gitment无法通过gh-oauth-imsun-net认证/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -443,44 +432,14 @@
 
       
         
-          
-            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近在做React Native项目工程化的事，eslint代码检查，Prettier代码美化，git commit hook检查等，然后就是考虑单元测试，虽然都是前端技术栈的内容，但是因为React Native会涉及很多原生模块，在单元测试环境搭建上会比纯web端麻烦一点。</p>
-<h2 id="工具箱"><a href="#工具箱" class="headerlink" title="工具箱"></a>工具箱</h2><p><strong>Jest+babel-jest+babel</strong></p>
-<p>RN项目默认是使用Jest来做单元测试的，所以也没必要去找其他测试框架，就他了。RN项目的编译打包是集成在metro bundler里面的，已达到开箱即用的目的。但是Jest框架运行的时候是直接加载js源文件的，所以需要babel编译器的帮忙。</p>
-<p>babel基础配置：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//.babelrc</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"presets"</span>: [<span class="string">"react-native"</span>],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当然可能会遇到很多js语法编译的问题，需要个别添加preset和plugin支持，比如下面的错误：</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">src/components/home/items.js: Missing class properties transform.</span><br><span class="line">        34 |   &#125;</span><br><span class="line">        35 | </span><br><span class="line">      &gt; 36 |   _onPress = () =&gt; &#123;</span><br><span class="line">           |   ^</span><br><span class="line">        37 |     this.props.onPress();</span><br><span class="line">        38 |   &#125;;</span><br><span class="line">        39 | &#125;</span><br></pre></td></tr></table></figure>
-<p>需要添加babel transform plugin：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//.babelrc</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"presets"</span>: [<span class="string">"react-native"</span>,<span class="string">"env"</span>],</span><br><span class="line">  <span class="attr">"plugins"</span>: [<span class="string">"transform-class-properties"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其他情况不再赘言。</p>
-<p>Jest配置：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // Load setup-tests.js before test execution</span><br><span class="line">  // setupTestFrameworkScriptFile: '&lt;rootDir&gt;setup-tests.js',</span><br><span class="line">  testEnvironment: 'node',</span><br><span class="line">  moduleNameMapper: &#123;</span><br><span class="line">    "^[./a-zA-Z0-9$_-]+\\.(bmp|gif|jpg|jpeg|mp4|png|psd|svg|webp)$": "&lt;rootDir&gt;/node_modules/react-native/jest/assetFileTransformer.js"</span><br><span class="line">  &#125;,</span><br><span class="line">  modulePathIgnorePatterns: [</span><br><span class="line">    <span class="string">"&lt;rootDir&gt;/node_modules/react-native/Libraries/react-native/"</span></span><br><span class="line">  ],</span><br><span class="line">  transformIgnorePatterns: [</span><br><span class="line">    <span class="string">"node_modules/(?!(react-native.*|static-container|react-navigation.*)/)"</span></span><br><span class="line">  ],</span><br><span class="line">  verbose: true,</span><br><span class="line">  preset:"react-native"</span><br><span class="line">  // ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>这里没有写transformer参数是因为安装babel-jest后默认tranformer就是它，testEnvironment和preset需要分别设置成node和react-native。</p>
-<p>另外有两个参数需要特别注意一下</p>
-<p><strong>moduleNameMapper:</strong> 对于js文件中引用的静态资源需要进行mock，这里用的是react-native里面的transformer</p>
-<p><strong>transformIgnorePatterns:</strong> jest tranformer默认不转换node_modules下的非标准js文件，所以一些三方库没有事先编译的话就需要添加白名单。否则就会出现下面类似的错误：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">node_modules/<span class="keyword">static</span>-container/StaticContainer.js:<span class="number">1</span></span><br><span class="line">    (&#123;<span class="string">"Object.&lt;anonymous&gt;"</span>:<span class="function"><span class="keyword">function</span>(<span class="params">module,exports,require,__dirname,__filename,global,jest</span>)</span>&#123;<span class="keyword">import</span> React, &#123; Component, Children &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line">                                                                                             ^^^^^^</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">SyntaxError</span>: Unexpected token <span class="keyword">import</span></span><br><span class="line">      </span><br><span class="line">      at ScriptTransformer._transformAndBuildScript (node_modules/jest-runtime/build/script_transformer.js:<span class="number">316</span>:<span class="number">17</span>)</span><br><span class="line">      at <span class="built_in">Object</span>.&lt;anonymous&gt; (node_modules/react-native-root-siblings/index.js:<span class="number">1</span>:<span class="number">1014</span>)</span><br><span class="line">      at <span class="built_in">Object</span>.&lt;anonymous&gt; (node_modules/react-native-root-toast/lib/Toast.js:<span class="number">1</span>:<span class="number">1048</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>react-native-mock-render + react-test-renderer</strong></p>
-<p>缺少原生mock的典型报错：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Invariant Violation: Native <span class="built_in">module</span> cannot be <span class="literal">null</span>.</span><br><span class="line">      at invariant (node_modules/fbjs/lib/invariant.js:<span class="number">42</span>:<span class="number">15</span>)</span><br><span class="line">      at <span class="keyword">new</span> NativeEventEmitter (node_modules/react-native/Libraries/EventEmitter/NativeEventEmitter.js:<span class="number">1</span>:<span class="number">2401</span>)</span><br><span class="line">      at <span class="built_in">Object</span>.&lt;anonymous&gt; (node_modules/react-native/Libraries/Components/Keyboard/Keyboard.js:<span class="number">1</span>:<span class="number">382</span>)</span><br><span class="line">      at <span class="built_in">Object</span>.&lt;anonymous&gt; (node_modules/react-native/Libraries/Components/ScrollResponder.js:<span class="number">1</span>:<span class="number">200</span>)</span><br></pre></td></tr></table></figure>
-<p>RN单元测试最麻烦的就是对原生模块的mock，三方库react-native-mock-render可以帮我们做一些基础的mock，特别是一些RN特有的组件，比如StatusBar，SafeAreaView。而vdom的渲染测试可以使用react-test-renderer来做。</p>
-<p>很多网上的教程一上来就是Jest+Enzyme，实验后并不推荐一开始使用Enzyme，Enzyme为了适配RN项目提供了enzyme-adapter-react-16，这个adapter也是基于react-test-renderer的，但是它并没有对StatusBar和SafeAreaView这类非react-dom的mock，因此在渲染时会出现如下错误：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Enzyme Internal <span class="built_in">Error</span>: unknown node <span class="keyword">with</span> tag <span class="number">0</span></span><br><span class="line">  </span><br><span class="line">  at toTree (node_modules/enzyme-adapter-react<span class="number">-16.3</span>/build/ReactSixteenThreeAdapter.js:<span class="number">221</span>:<span class="number">13</span>)</span><br><span class="line">  at childrenToTree (node_modules/enzyme-adapter-react<span class="number">-16.3</span>/build/ReactSixteenThreeAdapter.js:<span class="number">234</span>:<span class="number">12</span>)</span><br><span class="line">  at toTree (node_modules/enzyme-adapter-react<span class="number">-16.3</span>/build/ReactSixteenThreeAdapter.js:<span class="number">180</span>:<span class="number">19</span>)</span><br><span class="line">  at childrenToTree (node_modules/enzyme-adapter-react<span class="number">-16.3</span>/build/ReactSixteenThreeAdapter.js:<span class="number">234</span>:<span class="number">12</span>)</span><br><span class="line">  at toTree (node_modules/enzyme-adapter-react<span class="number">-16.3</span>/build/ReactSixteenThreeAdapter.js:<span class="number">180</span>:<span class="number">19</span>)</span><br><span class="line">  at childrenToTree (node_modules/enzyme-adapter-react<span class="number">-16.3</span>/build/ReactSixteenThreeAdapter.js:<span class="number">234</span>:<span class="number">12</span>)</span><br><span class="line">  at toTree (node_modules/enzyme-adapter-react<span class="number">-16.3</span>/build/ReactSixteenThreeAdapter.js:<span class="number">180</span>:<span class="number">19</span>)</span><br><span class="line">  at <span class="built_in">Object</span>.getNode (node_modules/enzyme-adapter-react<span class="number">-16.3</span>/build/ReactSixteenThreeAdapter.js:<span class="number">348</span>:<span class="number">33</span>)</span><br><span class="line">  at <span class="keyword">new</span> ReactWrapper (node_modules/enzyme/build/ReactWrapper.js:<span class="number">136</span>:<span class="number">44</span>)</span><br><span class="line">  at mount (node_modules/enzyme/build/mount.js:<span class="number">21</span>:<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-<p>虽然react-native-mock-render已经帮我们做了很多基础模块的mock，但是还有一些不足</p>
-<ol>
-<li><p>与react native版本的不一致，我目前环境使用的<a href="mailto:react-native-mock-render@0.1.2" target="_blank" rel="noopener">react-native-mock-render@0.1.2</a> 和<a href="mailto:react-native@0.55.4" target="_blank" rel="noopener">react-native@0.55.4</a>，react-native-mock-render中因为缺少两个Native Module（StatusBarManager，KeyboardObserver）导致我的用例失败</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">TypeError</span>: Cannot read property <span class="string">'HEIGHT'</span> <span class="keyword">of</span> <span class="literal">undefined</span></span><br><span class="line">   </span><br><span class="line">&gt; <span class="number">1</span> | <span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line">  <span class="number">2</span> | <span class="keyword">import</span> &#123;</span><br><span class="line">  <span class="number">3</span> |   Platform,</span><br><span class="line">  <span class="number">4</span> |   Text,</span><br><span class="line">  </span><br><span class="line">  at <span class="built_in">Object</span>.&lt;anonymous&gt; (node_modules/react-native/Libraries/Components/StatusBar/StatusBar.js:<span class="number">1</span>:<span class="number">6976</span>)</span><br><span class="line">  at <span class="built_in">Object</span>.get StatusBar [<span class="keyword">as</span> StatusBar] (node_modules/react-native/Libraries/react-native/react-native-implementation.js:<span class="number">1</span>:<span class="number">1672</span>)</span><br><span class="line">  at getStatusBarHeight (node_modules/react-native-iphone-x-helper/index.js:<span class="number">1</span>:<span class="number">817</span>)</span><br><span class="line">  at <span class="built_in">Object</span>.&lt;anonymous&gt; (src/components/common/topGuideBar.js:<span class="number">1</span>:<span class="number">4122</span>)</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol start="2">
-<li><p>自定义Native Module，我们自定义的Native Module需要自己进行mock，如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">jest.mock('NativeModules', ()=&gt;(&#123;</span><br><span class="line">  //mock自己的业务module</span><br><span class="line">  RNTrackerManager:&#123;</span><br><span class="line">    startTraceEvent: jest.fn(),</span><br><span class="line">    postEvent: jest.fn(),</span><br><span class="line">    endTraceEvent: jest.fn()</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  RNComUtilManager: &#123;</span><br><span class="line">    setNavSwipe:jest.fn()</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  //mock三方库的native module</span><br><span class="line">  RNVectorIconsManager:&#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  //mock react-native的native module（react-native-mock-render缺失）</span><br><span class="line">  StatusBarManager: &#123;</span><br><span class="line">    HEIGHT:800,</span><br><span class="line">    setStyle:jest.fn(),</span><br><span class="line">    setHidden:jest.fn(),</span><br><span class="line">    setNetworkActivityIndicatorVisible:jest.fn()</span><br><span class="line">  &#125;,</span><br><span class="line">  KeyboardObserver: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="投入产出"><a href="#投入产出" class="headerlink" title="投入产出"></a>投入产出</h2><p>从上面的描述来看搭建RN项目的单元测试环境还是挺麻烦的，而且还有很多需要mock的地方，不仅是原生module，还有网络请求等，环境搭好后还有测试用例的编写，对于小团队来说，单元测试的投入产出是不是匹配成为一个值得思考的问题。</p>
-
-          
+          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近在做React Native项目工程化的事，eslint代码检查，Prettier代码美化，git commit hook检查等，然后就是考虑单元测试，虽然都是前端技术栈的内容，但是因为React Native会涉及很多原生模块，在单元测试环境搭建上会比纯web端麻烦一点。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/22/ReactNative单元测试从入门到放弃/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -597,63 +556,15 @@
 
       
         
-          
-            <h2 id="利用husky和lint-staged在git-commit之前做代码检查"><a href="#利用husky和lint-staged在git-commit之前做代码检查" class="headerlink" title="利用husky和lint-staged在git commit之前做代码检查"></a>利用husky和lint-staged在git commit之前做代码检查</h2><p>git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。</p>
+          <h2 id="利用husky和lint-staged在git-commit之前做代码检查"><a href="#利用husky和lint-staged在git-commit之前做代码检查" class="headerlink" title="利用husky和lint-staged在git commit之前做代码检查"></a>利用husky和lint-staged在git commit之前做代码检查</h2><p>git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。</p>
 <p>为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。</p>
-<ol>
-<li>安装husky和lint-staged</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev husky lint-staged</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>配置package.json</li>
-</ol>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"husky"</span>: &#123;</span><br><span class="line">    <span class="attr">"hooks"</span>: &#123;</span><br><span class="line">      <span class="attr">"pre-commit"</span>: <span class="string">"lint-staged"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"lint-staged"</span>: &#123;</span><br><span class="line">    <span class="attr">"*.&#123;js,vue&#125;"</span>: [<span class="string">"eslint --fix"</span>, <span class="string">"git add"</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>husky在install action中会替换hooks目录下的相关钩子函数，触发时转去执行package.json中配置的命名，在uninstall action中会恢复原状。</p>
-<p>lint-staged是为了提高lint的效率，只知道提交的文件进行检查。</p>
-<h2 id="前端代码查重jsinspect"><a href="#前端代码查重jsinspect" class="headerlink" title="前端代码查重jsinspect"></a>前端代码查重jsinspect</h2><p>重构代码时很重要的一步就是抽取通用代码，不要repeat yourself，不要ctrl-c/ctrl-v。</p>
-<p>jsinspect帮助我们快速查找项目里面的重复代码。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jsinspect -t <span class="number">50</span> --ignore <span class="string">"test"</span> ./src</span><br></pre></td></tr></table></figure>
-<p>参数解析：</p>
-<ul>
-<li><p><strong>Threshold</strong> indicates the minimum number of nodes to analyze.</p>
-<ul>
-<li><strong>Identifiers</strong> indicates whether or not the nodes in a match should also havematching identifiers</li>
-<li><strong>literals</strong>  means whether or not literal values should match</li>
-<li><strong>minInstances</strong> specifies the min number of instances for a match</li>
-</ul>
-</li>
-</ul>
-<p>jsinspect的基本思路如下图所示：</p>
-<p><img src="/2019/03/15/前端-工作小结3-4-3-15/D75D10C6-747E-4DC5-AFBE-7C897DDFD1EF.png" alt="D75D10C6-747E-4DC5-AFBE-7C897DDFD1EF"></p>
-<p>首先通过对每个文件通过babel parser生成AST，对AST进行深度遍历保存下nodes全序列。根据设定的threashold值遍历所有满足条件的node子序列，它们就是要匹配的潜在对象，每一个子序列生成一个key，计算方法就是n个node的type和length相连接。对相同key值的子序列聚合得到相应的matches。</p>
-<p>jsinspect官方源的babel parser是6.x版本的，所以只支持js，jsx和flow的translate，而我们项目里有很多ts，也需要支持。babel 7开始支持typescript，所以需要对jsinspect稍作修改。</p>
-<ol>
-<li><p>package.json</p>
-<p>“babylon”: “6.16.1”    =&gt;    “@babel/parser”: “^7.3.4”,</p>
-</li>
-<li><p>bin/jsinspect</p>
-<p>var extensions = [‘.js’, ‘.jsx’, ‘.ts’]; //增加ts支持</p>
-</li>
-<li><p>lib/parser</p>
-<p>将plugins中的flow替换成typescript，两者不能同时支持</p>
-</li>
-</ol>
-<p>详细的见<a href="https://github.com/JoeMaybe/jsinspect/tree/feature_ts_support" target="_blank" rel="noopener">https://github.com/JoeMaybe/jsinspect/tree/feature_ts_support</a></p>
-<p>也可以通过npm安装:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g jsinspect_support_ts</span><br></pre></td></tr></table></figure>
-<p>因为需要用到最新版本的babel，而各个项目babel版本不尽相同，为了避免迁移成本，尽量全局安装。</p>
-<h2 id="webpack无用文件扫描插件"><a href="#webpack无用文件扫描插件" class="headerlink" title="webpack无用文件扫描插件"></a>webpack无用文件扫描插件</h2><p>背景：**在项目开发一段时间后，项目中的文件开始变得臃肿冗余，有些相同功能的文件在重构之后也没有即时删掉，虽然webpack本身在打包时不会理会这些未被引用的文件，但在开发过程中不管是打开文件还是搜索代码都会遇到一些困惑和麻烦，所以为了保持项目整洁还是希望有一个工具可以帮忙找出无用的文件。</p>
-<p><strong>实现：</strong></p>
-<p>webpack本身做了依赖分析的工作，而且提供了强大的plugin机制可以使开发者方便的介入webpack的工作流程借助webpack的中间结果做一些自定义的任务，我们的Plugin其实很简单：</p>
-<ol>
-<li>首先遍历src文件夹下所有的文件</li>
-<li>拿到webpack已经生成的依赖列表</li>
-<li>只要不在webpack依赖列表中可以认为就是无用文件</li>
-</ol>
-<p>具体代码如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>)</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UnusedFilesPlugin</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.options = options;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isNodeModulePath</span>(<span class="params"> path </span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> !!(</span><br><span class="line">        !path ||</span><br><span class="line">        path.toString().indexOf( <span class="string">'node_modules'</span> ) &gt; <span class="number">-1</span> ||</span><br><span class="line">        path.toString().indexOf( <span class="string">'./~/'</span> ) &gt; <span class="number">-1</span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readDirSync</span>(<span class="params">dir, result</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'walk dir: '</span>+dir + <span class="built_in">JSON</span>.stringify(result))</span><br><span class="line">  <span class="keyword">var</span> pa = fs.readdirSync(dir, result);</span><br><span class="line">  pa.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">ele,index</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> cur = path.join(dir,ele)</span><br><span class="line">    <span class="keyword">var</span> info = fs.statSync(cur)  </span><br><span class="line">    <span class="keyword">if</span>(info.isDirectory())&#123;</span><br><span class="line">      readDirSync(cur, result);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      result.push(cur)</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">UnusedFilesPlugin.prototype.apply = <span class="function"><span class="keyword">function</span>(<span class="params">compiler</span>) </span>&#123;</span><br><span class="line">  compiler.plugin(<span class="string">'emit'</span>, (compilation, callback) =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'UnusedFilesPlugin is running =========='</span>);</span><br><span class="line">      <span class="keyword">var</span> allFiles = [];</span><br><span class="line">      <span class="keyword">var</span> dependency = &#123;&#125;;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">var</span> root = path.join(__dirname,<span class="string">'../'</span>, <span class="keyword">this</span>.options.srcDir)</span><br><span class="line">      readDirSync(root,allFiles);</span><br><span class="line"></span><br><span class="line">      compilation.fileDependencies.filter(<span class="function"><span class="params">filepath</span> =&gt;</span> !isNodeModulePath( filepath )).map(<span class="function"><span class="params">filepath</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'file dependency: '</span>+filepath);</span><br><span class="line">        dependency[filepath] = <span class="literal">true</span>;</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> unused = [];</span><br><span class="line">      allFiles.map(<span class="function"><span class="params">file</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!dependency[file])</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">"found unused file : "</span>+file)</span><br><span class="line">          unused.push(file)</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      fs.writeFile(<span class="string">'./unused_files.json'</span>, <span class="built_in">JSON</span>.stringify(&#123;<span class="string">'total'</span>:unused.length, <span class="string">'fileList'</span>:unused&#125;), (err) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'写入文件操作失败'</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'写入文件操作成功'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'UnusedFilesPlugin is done =========='</span>);</span><br><span class="line">      callback()</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = UnusedFilesPlugin;</span><br></pre></td></tr></table></figure>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/15/前端-工作小结3-4-3-15/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -770,21 +681,15 @@
 
       
         
-          
-            <p>问题描述：RN项目里需要每个页面监听Android Back键从而实现物理键回退功能</p>
+          <p>问题描述：RN项目里需要每个页面监听Android Back键从而实现物理键回退功能</p>
 <h2 id="继承方案"><a href="#继承方案" class="headerlink" title="继承方案"></a>继承方案</h2><p>定义一个基础组件BaseComponent做监听，所有的页面都继承这个组件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">    &#125;</span><br><span class="line">    componentWillMount() &#123;</span><br><span class="line">        <span class="keyword">if</span> (Platform.OS === <span class="string">'android'</span>) &#123;</span><br><span class="line">            BackAndroid.addEventListener(<span class="string">"hardwareBackPress"</span>, <span class="keyword">this</span>.onBackClicked);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentWillUnmount() &#123;</span><br><span class="line">        <span class="keyword">if</span> (Platform.OS === <span class="string">'android'</span>) &#123;</span><br><span class="line">            BackAndroid.removeEventListener(<span class="string">"hardwareBackPress"</span>, <span class="keyword">this</span>.onBackClicked);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    onBackClicked = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> parent = <span class="keyword">this</span>.props.navigation.dangerouslyGetParent();</span><br><span class="line">        <span class="keyword">const</span> canGoBack = parent &amp;&amp; parent.state &amp;&amp; parent.state.index &gt; <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (!canGoBack) &#123;</span><br><span class="line">            <span class="keyword">const</span> RouterManager = NativeModules.RNRouterManager;</span><br><span class="line">            RouterManager.pop();</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> &#123; goBack &#125; = <span class="keyword">this</span>.props.navigation;</span><br><span class="line">            goBack();</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>乍一看，好像没错，问题出在哪？</p>
-<p>React生命周期函数会被子类覆盖！！</p>
-<h2 id="组合方案"><a href="#组合方案" class="headerlink" title="组合方案"></a>组合方案</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> BackListenedComponent = <span class="function">(<span class="params">ComposedComponent</span>) =&gt;</span> </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">BackListenedComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">        componentWillMount() &#123;</span><br><span class="line">            <span class="keyword">if</span> (Platform.OS === <span class="string">'android'</span>) &#123;</span><br><span class="line">                BackAndroid.addEventListener(<span class="string">"hardwareBackPress"</span>, <span class="keyword">this</span>.onBackClicked);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        componentWillUnmount() &#123;</span><br><span class="line">            <span class="keyword">if</span> (Platform.OS === <span class="string">'android'</span>) &#123;</span><br><span class="line">                BackAndroid.removeEventListener(<span class="string">"hardwareBackPress"</span>, <span class="keyword">this</span>.onBackClicked);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        render()&#123;</span><br><span class="line">            <span class="keyword">return</span> &lt;ComposedComponent &#123;...this.state&#125; &#123;...this.props&#125;&gt;&lt;/ComposedComponent&gt;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        onBackClicked = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> parent = <span class="keyword">this</span>.props.navigation.dangerouslyGetParent();</span><br><span class="line">            <span class="keyword">const</span> canGoBack = parent &amp;&amp; parent.state &amp;&amp; parent.state.index &gt; <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (!canGoBack) &#123;</span><br><span class="line">                <span class="keyword">const</span> RouterManager = NativeModules.RNRouterManager;</span><br><span class="line">                RouterManager.pop();</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">const</span> &#123; goBack &#125; = <span class="keyword">this</span>.props.navigation;</span><br><span class="line">                goBack();</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>At Facebook, we use React in thousands of components, and we haven’t found any use cases where we would recommend creating component inheritance hierarchies.</p>
-</blockquote>
-<p>Facebook自己的实践中也都是用组合来实现的，对开发者也是如此推荐，这种组合的模式也叫做高阶组件hoc（higher-order components），简单的说，高阶组件就是一个函数，把一种组件转化成另外一种组件，切面编程是它的一种经典使用场景。</p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://reactjs.org/docs/composition-vs-inheritance.html" target="_blank" rel="noopener">Composition vs Inheritance</a></p>
-<p><a href="https://reactjs.org/docs/higher-order-components.html" target="_blank" rel="noopener">Higher-Order Components</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/19/react-composite-inheritance/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -901,21 +806,14 @@
 
       
         
-          
-            <h2 id="认识Javascript的类"><a href="#认识Javascript的类" class="headerlink" title="认识Javascript的类"></a>认识Javascript的类</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name, passwordHash</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.password = passwordHash;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">User.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"[User "</span> + <span class="keyword">this</span>.name + <span class="string">"]"</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">User.prototype.checkPassword = <span class="function"><span class="keyword">function</span>(<span class="params">password</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> hash(password) === <span class="keyword">this</span>.passwordHash;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>Javascript中的类本质上是一个构造函数（User）与一个用于在该类（User.prototype）实例间共享方法的原型对象的结合</strong></p>
-<p><img src="/2019/02/19/js-class-inheritance/DEEECAF9-F151-4566-9B8A-A4E09687B137.png" style="zoom:50%"></p>
-<p>在JS中，函数本身也是一个对象，prototype是它的一个属性，称为对象原型，其本质也是一个对象，包含constructor和其他属性成员。constructor默认指向自身构造函数。 当我们使用new操作符创建User的实例时，产生的对象u得到了自动分配的原型对象，该原型对象被存储在User.prototype中。实例对象u根据prototype.constructor 所指向的构造函数进行实例初始化。</p>
-<h2 id="认识Javascript的继承"><a href="#认识Javascript的继承" class="headerlink" title="认识Javascript的继承"></a>认识Javascript的继承</h2><p>Javascript里面的继承是利用原型链来实现的，比如我们管理员Administrator继承自User：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Administrator</span>(<span class="params">name, passwordHash</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//将原型的实例属性变成自身的实例属性</span></span><br><span class="line">    User.call(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Administrator.prototype = <span class="built_in">Object</span>.create(User.prototype)</span><br><span class="line">Administrator.prototype.constructor = Administrator;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Object.create只有在ES5环境中才有效</span></span><br><span class="line"><span class="comment">//if (typeof Object.create === 'undefined') &#123;</span></span><br><span class="line"><span class="comment">//    Object.create = function(prototype)&#123;</span></span><br><span class="line"><span class="comment">//        function C() &#123;&#125;</span></span><br><span class="line"><span class="comment">//        C.prototype = prototype;</span></span><br><span class="line"><span class="comment">//        return new C();</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2019/02/19/js-class-inheritance/075B63FC-C989-4AED-B6AC-07357FC10102.png" style="zoom:50%"></p>
-<p>Administrator构造函数里通过User.call(this)将继承来的name和password属性变成自己的实例属性，而原型属性toString和checkPassword将通过原型链查找在User.prototype中找到。</p>
-<h2 id="ES6下的语法"><a href="#ES6下的语法" class="headerlink" title="ES6下的语法"></a>ES6下的语法</h2><p><strong>ES6方式：用class关键字定义对象类型，用extends关键字实现继承</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name, passwordHash)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.passwordHash = passwordHash;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    toString() &#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="string">"[User "</span> + <span class="keyword">this</span>.name + <span class="string">"]"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	checkPassword(password) &#123;</span><br><span class="line">    	<span class="keyword">return</span> hash(password) === <span class="keyword">this</span>.passwordHash;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Administrator</span> <span class="keyword">extends</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name, passwordHash)&#123;</span><br><span class="line">        <span class="keyword">super</span>(name, passwordHash)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://www.jianshu.com/p/4d491a18b3f0" target="_blank" rel="noopener">js对象原型与继承</a></p>
-<p><a href="http://vdisk.weibo.com/s/u6b1909gma8s5" target="_blank" rel="noopener">Effective Javascript</a></p>
-
-          
+          <h2 id="认识Javascript的类"><a href="#认识Javascript的类" class="headerlink" title="认识Javascript的类"></a>认识Javascript的类</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name, passwordHash</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.password = passwordHash;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">User.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"[User "</span> + <span class="keyword">this</span>.name + <span class="string">"]"</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">User.prototype.checkPassword = <span class="function"><span class="keyword">function</span>(<span class="params">password</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> hash(password) === <span class="keyword">this</span>.passwordHash;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/19/js-class-inheritance/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1004,6 +902,15 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
 
           </nav>
 
@@ -1054,7 +961,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -1153,6 +1060,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
 

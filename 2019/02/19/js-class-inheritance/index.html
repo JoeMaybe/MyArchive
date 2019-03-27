@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next muse use-motion" lang>
+<html class="theme-next gemini" lang>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="javascript,继承,原型链,">
 
 
 
@@ -80,6 +78,7 @@
 
 
 <meta name="description" content="认识Javascript的类123456789101112function User(name, passwordHash) &amp;#123;    this.name = name;    this.password = passwordHash;&amp;#125;User.prototype.toString = function() &amp;#123;    return &quot;[User &quot; + this.n">
+<meta name="keywords" content="javascript,继承,原型链">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS基础：类和继承">
 <meta property="og:url" content="http://yoursite.com/2019/02/19/js-class-inheritance/index.html">
@@ -88,7 +87,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/02/19/js-class-inheritance/DEEECAF9-F151-4566-9B8A-A4E09687B137.png">
 <meta property="og:image" content="http://yoursite.com/2019/02/19/js-class-inheritance/075B63FC-C989-4AED-B6AC-07357FC10102.png">
-<meta property="og:updated_time" content="2019-03-27T01:44:35.000Z">
+<meta property="og:updated_time" content="2019-03-27T07:29:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS基础：类和继承">
 <meta name="twitter:description" content="认识Javascript的类123456789101112function User(name, passwordHash) &amp;#123;    this.name = name;    this.password = passwordHash;&amp;#125;User.prototype.toString = function() &amp;#123;    return &quot;[User &quot; + this.n">
@@ -100,12 +99,12 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: 'Author'
@@ -189,6 +188,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
           </a>
         </li>
       
@@ -313,6 +322,7 @@
 
       
         <h2 id="认识Javascript的类"><a href="#认识Javascript的类" class="headerlink" title="认识Javascript的类"></a>认识Javascript的类</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name, passwordHash</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.password = passwordHash;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">User.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"[User "</span> + <span class="keyword">this</span>.name + <span class="string">"]"</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">User.prototype.checkPassword = <span class="function"><span class="keyword">function</span>(<span class="params">password</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> hash(password) === <span class="keyword">this</span>.passwordHash;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p><strong>Javascript中的类本质上是一个构造函数（User）与一个用于在该类（User.prototype）实例间共享方法的原型对象的结合</strong></p>
 <p><img src="/2019/02/19/js-class-inheritance/DEEECAF9-F151-4566-9B8A-A4E09687B137.png" style="zoom:50%"></p>
 <p>在JS中，函数本身也是一个对象，prototype是它的一个属性，称为对象原型，其本质也是一个对象，包含constructor和其他属性成员。constructor默认指向自身构造函数。 当我们使用new操作符创建User的实例时，产生的对象u得到了自动分配的原型对象，该原型对象被存储在User.prototype中。实例对象u根据prototype.constructor 所指向的构造函数进行实例初始化。</p>
@@ -338,6 +348,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/继承/" rel="tag"># 继承</a>
+          
+            <a href="/tags/原型链/" rel="tag"># 原型链</a>
+          
+        </div>
       
 
       
@@ -449,6 +469,15 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
 
           </nav>
 
@@ -515,7 +544,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -614,6 +643,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

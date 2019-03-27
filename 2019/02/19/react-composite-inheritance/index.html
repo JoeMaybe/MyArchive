@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next muse use-motion" lang>
+<html class="theme-next gemini" lang>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -79,17 +77,17 @@
 
 
 
-<meta name="description" content="问题描述：RN项目里需要每个页面监听Android Back键从而实现物理键回退功能 继承方案定义一个基础组件BaseComponent做监听，所有的页面都继承这个组件 12345678910111213141516171819202122232425262728293031export default class BaseComponent extends Component &amp;#123;">
+<meta name="description" content="问题描述：RN项目里需要每个页面监听Android Back键从而实现物理键回退功能 继承方案定义一个基础组件BaseComponent做监听，所有的页面都继承这个组件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React基础：组合 vs 继承">
 <meta property="og:url" content="http://yoursite.com/2019/02/19/react-composite-inheritance/index.html">
 <meta property="og:site_name" content="One &amp;&amp; More">
-<meta property="og:description" content="问题描述：RN项目里需要每个页面监听Android Back键从而实现物理键回退功能 继承方案定义一个基础组件BaseComponent做监听，所有的页面都继承这个组件 12345678910111213141516171819202122232425262728293031export default class BaseComponent extends Component &amp;#123;">
+<meta property="og:description" content="问题描述：RN项目里需要每个页面监听Android Back键从而实现物理键回退功能 继承方案定义一个基础组件BaseComponent做监听，所有的页面都继承这个组件">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-20T01:26:46.000Z">
+<meta property="og:updated_time" content="2019-03-27T07:16:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React基础：组合 vs 继承">
-<meta name="twitter:description" content="问题描述：RN项目里需要每个页面监听Android Back键从而实现物理键回退功能 继承方案定义一个基础组件BaseComponent做监听，所有的页面都继承这个组件 12345678910111213141516171819202122232425262728293031export default class BaseComponent extends Component &amp;#123;">
+<meta name="twitter:description" content="问题描述：RN项目里需要每个页面监听Android Back键从而实现物理键回退功能 继承方案定义一个基础组件BaseComponent做监听，所有的页面都继承这个组件">
 
 
 
@@ -97,12 +95,12 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: 'Author'
@@ -186,6 +184,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
           </a>
         </li>
       
@@ -311,6 +319,7 @@
       
         <p>问题描述：RN项目里需要每个页面监听Android Back键从而实现物理键回退功能</p>
 <h2 id="继承方案"><a href="#继承方案" class="headerlink" title="继承方案"></a>继承方案</h2><p>定义一个基础组件BaseComponent做监听，所有的页面都继承这个组件</p>
+<a id="more"></a>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">    &#125;</span><br><span class="line">    componentWillMount() &#123;</span><br><span class="line">        <span class="keyword">if</span> (Platform.OS === <span class="string">'android'</span>) &#123;</span><br><span class="line">            BackAndroid.addEventListener(<span class="string">"hardwareBackPress"</span>, <span class="keyword">this</span>.onBackClicked);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentWillUnmount() &#123;</span><br><span class="line">        <span class="keyword">if</span> (Platform.OS === <span class="string">'android'</span>) &#123;</span><br><span class="line">            BackAndroid.removeEventListener(<span class="string">"hardwareBackPress"</span>, <span class="keyword">this</span>.onBackClicked);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    onBackClicked = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> parent = <span class="keyword">this</span>.props.navigation.dangerouslyGetParent();</span><br><span class="line">        <span class="keyword">const</span> canGoBack = parent &amp;&amp; parent.state &amp;&amp; parent.state.index &gt; <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (!canGoBack) &#123;</span><br><span class="line">            <span class="keyword">const</span> RouterManager = NativeModules.RNRouterManager;</span><br><span class="line">            RouterManager.pop();</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> &#123; goBack &#125; = <span class="keyword">this</span>.props.navigation;</span><br><span class="line">            goBack();</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>乍一看，好像没错，问题出在哪？</p>
 <p>React生命周期函数会被子类覆盖！！</p>
@@ -450,6 +459,15 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
 
           </nav>
 
@@ -516,7 +534,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -615,6 +633,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
