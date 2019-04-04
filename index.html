@@ -317,6 +317,215 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/04/js模块化和标准演进/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JoeMaybe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="One && More">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/04/js模块化和标准演进/" class="post-title-link" itemprop="url">js模块化和标准演进</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-04 17:19:19 / Modified: 17:31:49" itemprop="dateCreated datePublished" datetime="2019-04-04T17:19:19+08:00">2019-04-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Javascript模块化"><a href="#Javascript模块化" class="headerlink" title="Javascript模块化"></a>Javascript模块化</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>优点</th>
+<th>缺点</th>
+<th>代码示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>原始文件</strong></td>
+<td>None</td>
+<td>1. 污染全局作用域 <br>2. 依赖关系不明显，难以维护</td>
+<td><code>&lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;</code><br><code>&lt;script src=&quot;jquery_scroller.js&quot;&gt;&lt;/script&gt;</code><br> <code>&lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;</code><br><code>&lt;script src=&quot;other1.js&quot;&gt;&lt;/script&gt;</code><br> <code>&lt;script src=&quot;other2.js&quot;&gt;&lt;/script&gt;</code> <br><code>&lt;script src=&quot;other3.js&quot;&gt;&lt;/script&gt;</code></td>
+</tr>
+<tr>
+<td><strong>CommonJS规范</strong></td>
+<td>实现了服务端的模块化加载</td>
+<td>1. 同步加载，只使用于服务端</td>
+<td><code>var x = 5;</code><br><code>var addX = function (value) {</code>  <br><code>return value + x; };</code><br><code>module.exports.x = x;</code> <br><code>module.exports.addX = addX;</code></td>
+</tr>
+<tr>
+<td><strong>AMD规范</strong></td>
+<td>实现了浏览器端的模块化加载</td>
+<td>1. 提高了开发成本 <br>2. 无法按需加载，必须提前加载好所有依赖</td>
+<td><code>define([&#39;./a&#39;, &#39;./b&#39;], function(a, b) {</code>   <br><code>a.doSomething()</code><br><code>b.doSomething()    });</code></td>
+</tr>
+<tr>
+<td><strong>CMD规范</strong></td>
+<td>1.实现了浏览器端的模块化加载<br> 2.可以按需加载，依赖就近</td>
+<td>依赖SPM打包，模块的加载逻辑偏重</td>
+<td><code>define(function(require, exports, module) {</code><br><code>var a = require(&#39;./a&#39;)</code><br><code>a.doSomething()</code><br><code>var b = require(&#39;./b&#39;)     // 依赖可以就近书写</code><br><code>b.doSomething()     });</code></td>
+</tr>
+<tr>
+<td><strong>ES6模块化</strong></td>
+<td>1. 非社区规范，真正的JS规范 <br>2.简单强大</td>
+<td>需要Babel支持</td>
+<td><code>import store from &#39;../store/index&#39;</code><br><code>import {mapState, mapMutations, mapActions} from &#39;vuex&#39;</code><br><code>import axios from &#39;../assets/js/request&#39;</code><br><code>import util from &#39;../utils/js/util.js&#39;</code><br><code>export default {</code><br><code>created () {</code><br><code>this.getClassify();</code><br><code>this.RESET_VALUE();</code><br><code>console.log(&#39;created&#39; ,new Date().getTime());      }</code></td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.imooc.com/article/20057" target="_blank" rel="noopener">JavaScript模块化 — Commonjs、AMD、CMD、ES6 modules</a></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/04/04/js模块化和标准演进/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/2018越南之行/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1415,7 +1624,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1475,7 +1684,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

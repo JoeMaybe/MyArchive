@@ -94,25 +94,25 @@
 
 
 
-  <meta name="description" content="问题描述：RN项目里需要每个页面监听Android Back键从而实现物理键回退功能 继承方案定义一个基础组件BaseComponent做监听，所有的页面都继承这个组件">
-<meta name="keywords" content="编程范式,React">
+  <meta name="description" content="Javascript模块化    优点 缺点 代码示例     原始文件 None 1. 污染全局作用域 2. 依赖关系不明显，难以维护 &amp;lt;script src=&amp;quot;jquery.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script src=&amp;quot;jquery_scroller.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script">
+<meta name="keywords" content="模块化,Javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React基础：组合 vs 继承">
-<meta property="og:url" content="http://yoursite.com/2019/02/19/react-composite-inheritance/index.html">
+<meta property="og:title" content="js模块化和标准演进">
+<meta property="og:url" content="http://yoursite.com/2019/04/04/js模块化和标准演进/index.html">
 <meta property="og:site_name" content="One &amp;&amp; More">
-<meta property="og:description" content="问题描述：RN项目里需要每个页面监听Android Back键从而实现物理键回退功能 继承方案定义一个基础组件BaseComponent做监听，所有的页面都继承这个组件">
+<meta property="og:description" content="Javascript模块化    优点 缺点 代码示例     原始文件 None 1. 污染全局作用域 2. 依赖关系不明显，难以维护 &amp;lt;script src=&amp;quot;jquery.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script src=&amp;quot;jquery_scroller.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-27T08:55:23.000Z">
+<meta property="og:updated_time" content="2019-04-04T09:31:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React基础：组合 vs 继承">
-<meta name="twitter:description" content="问题描述：RN项目里需要每个页面监听Android Back键从而实现物理键回退功能 继承方案定义一个基础组件BaseComponent做监听，所有的页面都继承这个组件">
+<meta name="twitter:title" content="js模块化和标准演进">
+<meta name="twitter:description" content="Javascript模块化    优点 缺点 代码示例     原始文件 None 1. 污染全局作用域 2. 依赖关系不明显，难以维护 &amp;lt;script src=&amp;quot;jquery.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script src=&amp;quot;jquery_scroller.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/19/react-composite-inheritance/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/04/js模块化和标准演进/">
 
 
 
@@ -122,7 +122,7 @@
   };
 </script>
 
-  <title>React基础：组合 vs 继承 | One && More</title>
+  <title>js模块化和标准演进 | One && More</title>
   
 
 
@@ -321,7 +321,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/19/react-composite-inheritance/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/04/js模块化和标准演进/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JoeMaybe">
@@ -338,7 +338,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">React基础：组合 vs 继承
+          <h1 class="post-title" itemprop="name headline">js模块化和标准演进
 
               
             
@@ -364,24 +364,12 @@
                 
               
 
-              <time title="Created: 2019-02-19 15:39:11" itemprop="dateCreated datePublished" datetime="2019-02-19T15:39:11+08:00">2019-02-19</time>
+              <time title="Created: 2019-04-04 17:19:19 / Modified: 17:31:49" itemprop="dateCreated datePublished" datetime="2019-04-04T17:19:19+08:00">2019-04-04</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-03-27 16:55:23" itemprop="dateModified" datetime="2019-03-27T16:55:23+08:00">2019-03-27</time>
               
             
           </span>
@@ -417,8 +405,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/02/19/react-composite-inheritance/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/02/19/react-composite-inheritance/" itemprop="commentCount"></span>
+                <a href="/2019/04/04/js模块化和标准演进/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/04/04/js模块化和标准演进/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -446,19 +434,84 @@
       
 
       
-        <p>问题描述：RN项目里需要每个页面监听Android Back键从而实现物理键回退功能</p>
-<h2 id="继承方案"><a href="#继承方案" class="headerlink" title="继承方案"></a>继承方案</h2><p>定义一个基础组件BaseComponent做监听，所有的页面都继承这个组件</p>
+        <h3 id="Javascript模块化"><a href="#Javascript模块化" class="headerlink" title="Javascript模块化"></a>Javascript模块化</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>优点</th>
+<th>缺点</th>
+<th>代码示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>原始文件</strong></td>
+<td>None</td>
+<td>1. 污染全局作用域 <br>2. 依赖关系不明显，难以维护</td>
+<td><code>&lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;</code><br><code>&lt;script src=&quot;jquery_scroller.js&quot;&gt;&lt;/script&gt;</code><br> <code>&lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;</code><br><code>&lt;script src=&quot;other1.js&quot;&gt;&lt;/script&gt;</code><br> <code>&lt;script src=&quot;other2.js&quot;&gt;&lt;/script&gt;</code> <br><code>&lt;script src=&quot;other3.js&quot;&gt;&lt;/script&gt;</code></td>
+</tr>
+<tr>
+<td><strong>CommonJS规范</strong></td>
+<td>实现了服务端的模块化加载</td>
+<td>1. 同步加载，只使用于服务端</td>
+<td><code>var x = 5;</code><br><code>var addX = function (value) {</code>  <br><code>return value + x; };</code><br><code>module.exports.x = x;</code> <br><code>module.exports.addX = addX;</code></td>
+</tr>
+<tr>
+<td><strong>AMD规范</strong></td>
+<td>实现了浏览器端的模块化加载</td>
+<td>1. 提高了开发成本 <br>2. 无法按需加载，必须提前加载好所有依赖</td>
+<td><code>define([&#39;./a&#39;, &#39;./b&#39;], function(a, b) {</code>   <br><code>a.doSomething()</code><br><code>b.doSomething()    });</code></td>
+</tr>
+<tr>
+<td><strong>CMD规范</strong></td>
+<td>1.实现了浏览器端的模块化加载<br> 2.可以按需加载，依赖就近</td>
+<td>依赖SPM打包，模块的加载逻辑偏重</td>
+<td><code>define(function(require, exports, module) {</code><br><code>var a = require(&#39;./a&#39;)</code><br><code>a.doSomething()</code><br><code>var b = require(&#39;./b&#39;)     // 依赖可以就近书写</code><br><code>b.doSomething()     });</code></td>
+</tr>
+<tr>
+<td><strong>ES6模块化</strong></td>
+<td>1. 非社区规范，真正的JS规范 <br>2.简单强大</td>
+<td>需要Babel支持</td>
+<td><code>import store from &#39;../store/index&#39;</code><br><code>import {mapState, mapMutations, mapActions} from &#39;vuex&#39;</code><br><code>import axios from &#39;../assets/js/request&#39;</code><br><code>import util from &#39;../utils/js/util.js&#39;</code><br><code>export default {</code><br><code>created () {</code><br><code>this.getClassify();</code><br><code>this.RESET_VALUE();</code><br><code>console.log(&#39;created&#39; ,new Date().getTime());      }</code></td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.imooc.com/article/20057" target="_blank" rel="noopener">JavaScript模块化 — Commonjs、AMD、CMD、ES6 modules</a></p>
 <a id="more"></a>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">    &#125;</span><br><span class="line">    componentWillMount() &#123;</span><br><span class="line">        <span class="keyword">if</span> (Platform.OS === <span class="string">'android'</span>) &#123;</span><br><span class="line">            BackAndroid.addEventListener(<span class="string">"hardwareBackPress"</span>, <span class="keyword">this</span>.onBackClicked);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentWillUnmount() &#123;</span><br><span class="line">        <span class="keyword">if</span> (Platform.OS === <span class="string">'android'</span>) &#123;</span><br><span class="line">            BackAndroid.removeEventListener(<span class="string">"hardwareBackPress"</span>, <span class="keyword">this</span>.onBackClicked);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    onBackClicked = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> parent = <span class="keyword">this</span>.props.navigation.dangerouslyGetParent();</span><br><span class="line">        <span class="keyword">const</span> canGoBack = parent &amp;&amp; parent.state &amp;&amp; parent.state.index &gt; <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (!canGoBack) &#123;</span><br><span class="line">            <span class="keyword">const</span> RouterManager = NativeModules.RNRouterManager;</span><br><span class="line">            RouterManager.pop();</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> &#123; goBack &#125; = <span class="keyword">this</span>.props.navigation;</span><br><span class="line">            goBack();</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>乍一看，好像没错，问题出在哪？</p>
-<p>React生命周期函数会被子类覆盖！！</p>
-<h2 id="组合方案"><a href="#组合方案" class="headerlink" title="组合方案"></a>组合方案</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> BackListenedComponent = <span class="function">(<span class="params">ComposedComponent</span>) =&gt;</span> </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">BackListenedComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">        componentWillMount() &#123;</span><br><span class="line">            <span class="keyword">if</span> (Platform.OS === <span class="string">'android'</span>) &#123;</span><br><span class="line">                BackAndroid.addEventListener(<span class="string">"hardwareBackPress"</span>, <span class="keyword">this</span>.onBackClicked);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        componentWillUnmount() &#123;</span><br><span class="line">            <span class="keyword">if</span> (Platform.OS === <span class="string">'android'</span>) &#123;</span><br><span class="line">                BackAndroid.removeEventListener(<span class="string">"hardwareBackPress"</span>, <span class="keyword">this</span>.onBackClicked);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        render()&#123;</span><br><span class="line">            <span class="keyword">return</span> &lt;ComposedComponent &#123;...this.state&#125; &#123;...this.props&#125;&gt;&lt;/ComposedComponent&gt;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        onBackClicked = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> parent = <span class="keyword">this</span>.props.navigation.dangerouslyGetParent();</span><br><span class="line">            <span class="keyword">const</span> canGoBack = parent &amp;&amp; parent.state &amp;&amp; parent.state.index &gt; <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (!canGoBack) &#123;</span><br><span class="line">                <span class="keyword">const</span> RouterManager = NativeModules.RNRouterManager;</span><br><span class="line">                RouterManager.pop();</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">const</span> &#123; goBack &#125; = <span class="keyword">this</span>.props.navigation;</span><br><span class="line">                goBack();</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>At Facebook, we use React in thousands of components, and we haven’t found any use cases where we would recommend creating component inheritance hierarchies.</p>
-</blockquote>
-<p>Facebook自己的实践中也都是用组合来实现的，对开发者也是如此推荐，这种组合的模式也叫做高阶组件hoc（higher-order components），简单的说，高阶组件就是一个函数，把一种组件转化成另外一种组件，切面编程是它的一种经典使用场景。</p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://reactjs.org/docs/composition-vs-inheritance.html" target="_blank" rel="noopener">Composition vs Inheritance</a></p>
-<p><a href="https://reactjs.org/docs/higher-order-components.html" target="_blank" rel="noopener">Higher-Order Components</a></p>
+<h3 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>发布时间</th>
+<th>特性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ES5</strong></td>
+<td>2009.12</td>
+<td>1.strict模式<br>2.Array扩展<br>3.Object扩展<br>4.JSON对象<br>5.Function扩展</td>
+</tr>
+<tr>
+<td><strong>ES6/ES2015</strong></td>
+<td>2015.6</td>
+<td>1.块级作用域，let，const<br>2.解构赋值<br>3.扩展运算符（…）<br>4.形参默认值<br>5.箭头函数<br>6.字符串模版<br>7.Iterator迭代器<br>8.Generator<br>9.简化的对象写法<br>10.Class<br>11.Modules（import，export）<br>12.Map,Set,WeakMap,WeakSet<br>13.Math + Number + String + Array + Object APIs<br>14.Proxy<br>15.Symbols<br>16.Promise<br></td>
+</tr>
+<tr>
+<td><strong>ES7/ES2016</strong></td>
+<td>2016.3</td>
+<td>1.Array.prototype.includes()<br>2指数操作符</td>
+</tr>
+<tr>
+<td><strong>ES8/ES2017</strong></td>
+<td>2017.6</td>
+<td>1.async/await<br>2.Object扩展<br>3.String padding<br>4.函数参数列表结尾允许逗号<br></td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.cnblogs.com/fuheng01/articles/JS.html" target="_blank" rel="noopener"><a href="https://www.cnblogs.com/fuheng01/articles/JS.html" target="_blank" rel="noopener">JavaScript、ES5和ES6的介绍和区别</a></a></p>
+<p><a href="https://www.jianshu.com/p/20fb695715a7" target="_blank" rel="noopener">ECMAScript ES5、ES6、ES7</a></p>
+<p><a href="https://www.jianshu.com/p/909405b7aae4" target="_blank" rel="noopener">横向对比ES5、ES6、ES7、ES8</a></p>
 
       
     </div>
@@ -482,9 +535,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/编程范式/" rel="tag"># 编程范式</a>
+            <a href="/tags/模块化/" rel="tag"># 模块化</a>
           
-            <a href="/tags/React/" rel="tag"># React</a>
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
           
         </div>
       
@@ -497,8 +550,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/19/js-class-inheritance/" rel="next" title="JS基础：类和继承">
-                <i class="fa fa-chevron-left"></i> JS基础：类和继承
+              <a href="/2019/03/29/2018越南之行/" rel="next" title="2018越南之行（上）">
+                <i class="fa fa-chevron-left"></i> 2018越南之行（上）
               </a>
             
           </div>
@@ -506,10 +559,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/15/前端-工作小结3-4-3-15/" rel="prev" title="工作小结3.4-3.15">
-                工作小结3.4-3.15 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -687,7 +736,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#继承方案"><span class="nav-number">1.</span> <span class="nav-text">继承方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合方案"><span class="nav-number">2.</span> <span class="nav-text">组合方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">3.</span> <span class="nav-text">引用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Javascript模块化"><span class="nav-number">1.</span> <span class="nav-text">Javascript模块化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ECMAScript"><span class="nav-number">2.</span> <span class="nav-text">ECMAScript</span></a></li></ol></div>
             
 
           </div>
@@ -5403,7 +5452,7 @@ exports.default = english;
 <script>
   function renderGitment() {
     var gitment = new Gitmint({
-      id: '1550561951000',
+      id: '1554369559000',
       owner: 'JoeMaybe',
       repo: 'joemaybe.github.io',
       
