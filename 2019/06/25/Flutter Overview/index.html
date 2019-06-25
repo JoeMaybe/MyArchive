@@ -94,27 +94,28 @@
 
 
 
-  <meta name="description" content="利用husky和lint-staged在git commit之前做代码检查git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。 为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。">
-<meta name="keywords" content="工程化,git,webpack">
+  <meta name="description" content="Architecture官方对Flutter架构的说明  主要分为几个项目：  flutter flutter engine 2d图形库Skia Dart VM">
+<meta name="keywords" content="框架,架构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="工作小结3.4-3.15">
-<meta property="og:url" content="http://yoursite.com/2019/03/15/前端-工作小结3-4-3-15/index.html">
+<meta property="og:title" content="Flutter Overview">
+<meta property="og:url" content="http://yoursite.com/2019/06/25/Flutter Overview/index.html">
 <meta property="og:site_name" content="One &amp;&amp; More">
-<meta property="og:description" content="利用husky和lint-staged在git commit之前做代码检查git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。 为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。">
+<meta property="og:description" content="Architecture官方对Flutter架构的说明  主要分为几个项目：  flutter flutter engine 2d图形库Skia Dart VM">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/03/15/前端-工作小结3-4-3-15/D75D10C6-747E-4DC5-AFBE-7C897DDFD1EF.png">
-<meta property="og:updated_time" content="2019-03-27T08:55:23.000Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/25/Flutter%20Overview/flutter_overview.svg">
+<meta property="og:image" content="http://yoursite.com/2019/06/25/Flutter%20Overview/Class%20Diagram.png">
+<meta property="og:updated_time" content="2019-06-25T09:24:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="工作小结3.4-3.15">
-<meta name="twitter:description" content="利用husky和lint-staged在git commit之前做代码检查git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。 为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/15/前端-工作小结3-4-3-15/D75D10C6-747E-4DC5-AFBE-7C897DDFD1EF.png">
+<meta name="twitter:title" content="Flutter Overview">
+<meta name="twitter:description" content="Architecture官方对Flutter架构的说明  主要分为几个项目：  flutter flutter engine 2d图形库Skia Dart VM">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/25/Flutter%20Overview/flutter_overview.svg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/15/前端-工作小结3-4-3-15/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/25/Flutter Overview/">
 
 
 
@@ -124,7 +125,7 @@
   };
 </script>
 
-  <title>工作小结3.4-3.15 | One && More</title>
+  <title>Flutter Overview | One && More</title>
   
 
 
@@ -323,7 +324,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/前端-工作小结3-4-3-15/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/25/Flutter Overview/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JoeMaybe">
@@ -340,7 +341,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">工作小结3.4-3.15
+          <h1 class="post-title" itemprop="name headline">Flutter Overview
 
               
             
@@ -366,46 +367,16 @@
                 
               
 
-              <time title="Created: 2019-03-15 13:27:48" itemprop="dateCreated datePublished" datetime="2019-03-15T13:27:48+08:00">2019-03-15</time>
+              <time title="Created: 2019-06-25 15:45:26 / Modified: 17:24:02" itemprop="dateCreated datePublished" datetime="2019-06-25T15:45:26+08:00">2019-06-25</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-03-27 16:55:23" itemprop="dateModified" datetime="2019-03-27T16:55:23+08:00">2019-03-27</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -419,8 +390,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/03/15/前端-工作小结3-4-3-15/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/03/15/前端-工作小结3-4-3-15/" itemprop="commentCount"></span>
+                <a href="/2019/06/25/Flutter Overview/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2019/06/25/Flutter Overview/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -448,61 +419,23 @@
       
 
       
-        <h2 id="利用husky和lint-staged在git-commit之前做代码检查"><a href="#利用husky和lint-staged在git-commit之前做代码检查" class="headerlink" title="利用husky和lint-staged在git commit之前做代码检查"></a>利用husky和lint-staged在git commit之前做代码检查</h2><p>git工作流中提供了一系列钩子给用户做自定义操作，分布在.git/hooks文件夹里面，默认都是未启用状态。</p>
-<p>为了保证提交到远程分支的代码的可靠性，可以在commit-msg hook里面对提交的代码做静态分析，不通过则无法提交。</p>
+        <h3 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h3><p><a href="https://github.com/flutter/flutter/wiki/The-Engine-architecture" target="_blank" rel="noopener">官方对Flutter架构的说明</a></p>
+<p><img src="/2019/06/25/Flutter Overview/flutter_overview.svg" alt="flutter_overview"></p>
+<p>主要分为几个项目：</p>
+<ul>
+<li><a href="https://github.com/flutter/flutter" target="_blank" rel="noopener">flutter</a></li>
+<li><a href="https://github.com/flutter/engine" target="_blank" rel="noopener">flutter engine</a></li>
+<li><a href="https://skia.googlesource.com/skia" target="_blank" rel="noopener">2d图形库Skia</a></li>
+<li><a href="https://github.com/dart-lang/sdk" target="_blank" rel="noopener">Dart VM</a></li>
+</ul>
 <a id="more"></a>
+<h3 id="Engine"><a href="#Engine" class="headerlink" title="Engine"></a>Engine</h3><p><img src="/2019/06/25/Flutter Overview/Class Diagram.png" alt="主要类的UML图"></p>
+<p>主要目录：</p>
 <ol>
-<li>安装husky和lint-staged</li>
+<li>shell：主要负责原生和Engine之间的交互，代表Dart App的承载基础，比如iOS端通过适配层FlutterViewController或FlutterEngine对C++ Engine层进行初始化</li>
+<li>runtime：主要负责Dart和Engine之间的交互，代表Dart App的运行实例，其中ui.window就是RuntimeController</li>
+<li>lib：C++ Engine层向上提供lib库dart.ui，除了ui.window还有painting，compositing，text等</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev husky lint-staged</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>配置package.json</li>
-</ol>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"husky"</span>: &#123;</span><br><span class="line">    <span class="attr">"hooks"</span>: &#123;</span><br><span class="line">      <span class="attr">"pre-commit"</span>: <span class="string">"lint-staged"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"lint-staged"</span>: &#123;</span><br><span class="line">    <span class="attr">"*.&#123;js,vue&#125;"</span>: [<span class="string">"eslint --fix"</span>, <span class="string">"git add"</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>husky在install action中会替换hooks目录下的相关钩子函数，触发时转去执行package.json中配置的命名，在uninstall action中会恢复原状。</p>
-<p>lint-staged是为了提高lint的效率，只知道提交的文件进行检查。</p>
-<h2 id="前端代码查重jsinspect"><a href="#前端代码查重jsinspect" class="headerlink" title="前端代码查重jsinspect"></a>前端代码查重jsinspect</h2><p>重构代码时很重要的一步就是抽取通用代码，不要repeat yourself，不要ctrl-c/ctrl-v。</p>
-<p>jsinspect帮助我们快速查找项目里面的重复代码。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jsinspect -t <span class="number">50</span> --ignore <span class="string">"test"</span> ./src</span><br></pre></td></tr></table></figure>
-<p>参数解析：</p>
-<ul>
-<li><p><strong>Threshold</strong> indicates the minimum number of nodes to analyze.</p>
-<ul>
-<li><strong>Identifiers</strong> indicates whether or not the nodes in a match should also havematching identifiers</li>
-<li><strong>literals</strong>  means whether or not literal values should match</li>
-<li><strong>minInstances</strong> specifies the min number of instances for a match</li>
-</ul>
-</li>
-</ul>
-<p>jsinspect的基本思路如下图所示：</p>
-<p><img src="/2019/03/15/前端-工作小结3-4-3-15/D75D10C6-747E-4DC5-AFBE-7C897DDFD1EF.png" alt="D75D10C6-747E-4DC5-AFBE-7C897DDFD1EF"></p>
-<p>首先通过对每个文件通过babel parser生成AST，对AST进行深度遍历保存下nodes全序列。根据设定的threashold值遍历所有满足条件的node子序列，它们就是要匹配的潜在对象，每一个子序列生成一个key，计算方法就是n个node的type和length相连接。对相同key值的子序列聚合得到相应的matches。</p>
-<p>jsinspect官方源的babel parser是6.x版本的，所以只支持js，jsx和flow的translate，而我们项目里有很多ts，也需要支持。babel 7开始支持typescript，所以需要对jsinspect稍作修改。</p>
-<ol>
-<li><p>package.json</p>
-<p>“babylon”: “6.16.1”    =&gt;    “@babel/parser”: “^7.3.4”,</p>
-</li>
-<li><p>bin/jsinspect</p>
-<p>var extensions = [‘.js’, ‘.jsx’, ‘.ts’]; //增加ts支持</p>
-</li>
-<li><p>lib/parser</p>
-<p>将plugins中的flow替换成typescript，两者不能同时支持</p>
-</li>
-</ol>
-<p>详细的见<a href="https://github.com/JoeMaybe/jsinspect/tree/feature_ts_support" target="_blank" rel="noopener">https://github.com/JoeMaybe/jsinspect/tree/feature_ts_support</a></p>
-<p>也可以通过npm安装:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g jsinspect_support_ts</span><br></pre></td></tr></table></figure>
-<p>因为需要用到最新版本的babel，而各个项目babel版本不尽相同，为了避免迁移成本，尽量全局安装。</p>
-<h2 id="webpack无用文件扫描插件"><a href="#webpack无用文件扫描插件" class="headerlink" title="webpack无用文件扫描插件"></a>webpack无用文件扫描插件</h2><p>背景：**在项目开发一段时间后，项目中的文件开始变得臃肿冗余，有些相同功能的文件在重构之后也没有即时删掉，虽然webpack本身在打包时不会理会这些未被引用的文件，但在开发过程中不管是打开文件还是搜索代码都会遇到一些困惑和麻烦，所以为了保持项目整洁还是希望有一个工具可以帮忙找出无用的文件。</p>
-<p><strong>实现：</strong></p>
-<p>webpack本身做了依赖分析的工作，而且提供了强大的plugin机制可以使开发者方便的介入webpack的工作流程借助webpack的中间结果做一些自定义的任务，我们的Plugin其实很简单：</p>
-<ol>
-<li>首先遍历src文件夹下所有的文件</li>
-<li>拿到webpack已经生成的依赖列表</li>
-<li>只要不在webpack依赖列表中可以认为就是无用文件</li>
-</ol>
-<p>具体代码如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>)</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UnusedFilesPlugin</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.options = options;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isNodeModulePath</span>(<span class="params"> path </span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> !!(</span><br><span class="line">        !path ||</span><br><span class="line">        path.toString().indexOf( <span class="string">'node_modules'</span> ) &gt; <span class="number">-1</span> ||</span><br><span class="line">        path.toString().indexOf( <span class="string">'./~/'</span> ) &gt; <span class="number">-1</span></span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readDirSync</span>(<span class="params">dir, result</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'walk dir: '</span>+dir + <span class="built_in">JSON</span>.stringify(result))</span><br><span class="line">  <span class="keyword">var</span> pa = fs.readdirSync(dir, result);</span><br><span class="line">  pa.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">ele,index</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> cur = path.join(dir,ele)</span><br><span class="line">    <span class="keyword">var</span> info = fs.statSync(cur)  </span><br><span class="line">    <span class="keyword">if</span>(info.isDirectory())&#123;</span><br><span class="line">      readDirSync(cur, result);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      result.push(cur)</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">UnusedFilesPlugin.prototype.apply = <span class="function"><span class="keyword">function</span>(<span class="params">compiler</span>) </span>&#123;</span><br><span class="line">  compiler.plugin(<span class="string">'emit'</span>, (compilation, callback) =&gt; &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'UnusedFilesPlugin is running =========='</span>);</span><br><span class="line">      <span class="keyword">var</span> allFiles = [];</span><br><span class="line">      <span class="keyword">var</span> dependency = &#123;&#125;;</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">var</span> root = path.join(__dirname,<span class="string">'../'</span>, <span class="keyword">this</span>.options.srcDir)</span><br><span class="line">      readDirSync(root,allFiles);</span><br><span class="line"></span><br><span class="line">      compilation.fileDependencies.filter(<span class="function"><span class="params">filepath</span> =&gt;</span> !isNodeModulePath( filepath )).map(<span class="function"><span class="params">filepath</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'file dependency: '</span>+filepath);</span><br><span class="line">        dependency[filepath] = <span class="literal">true</span>;</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> unused = [];</span><br><span class="line">      allFiles.map(<span class="function"><span class="params">file</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!dependency[file])</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">"found unused file : "</span>+file)</span><br><span class="line">          unused.push(file)</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      fs.writeFile(<span class="string">'./unused_files.json'</span>, <span class="built_in">JSON</span>.stringify(&#123;<span class="string">'total'</span>:unused.length, <span class="string">'fileList'</span>:unused&#125;), (err) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'写入文件操作失败'</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'写入文件操作成功'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'UnusedFilesPlugin is done =========='</span>);</span><br><span class="line">      callback()</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = UnusedFilesPlugin;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -526,11 +459,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/工程化/" rel="tag"># 工程化</a>
+            <a href="/tags/框架/" rel="tag"># 框架</a>
           
-            <a href="/tags/git/" rel="tag"># git</a>
-          
-            <a href="/tags/webpack/" rel="tag"># webpack</a>
+            <a href="/tags/架构/" rel="tag"># 架构</a>
           
         </div>
       
@@ -543,8 +474,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/19/react-composite-inheritance/" rel="next" title="React基础：组合 vs 继承">
-                <i class="fa fa-chevron-left"></i> React基础：组合 vs 继承
+              <a href="/2019/04/20/2018越南之行下篇/" rel="next" title="2018越南之行（下）">
+                <i class="fa fa-chevron-left"></i> 2018越南之行（下）
               </a>
             
           </div>
@@ -552,10 +483,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/22/ReactNative单元测试从入门到放弃/" rel="prev" title="ReactNative单元测试从入门到放弃">
-                ReactNative单元测试从入门到放弃 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -741,7 +668,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#利用husky和lint-staged在git-commit之前做代码检查"><span class="nav-number">1.</span> <span class="nav-text">利用husky和lint-staged在git commit之前做代码检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前端代码查重jsinspect"><span class="nav-number">2.</span> <span class="nav-text">前端代码查重jsinspect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack无用文件扫描插件"><span class="nav-number">3.</span> <span class="nav-text">webpack无用文件扫描插件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Architecture"><span class="nav-number">1.</span> <span class="nav-text">Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Engine"><span class="nav-number">2.</span> <span class="nav-text">Engine</span></a></li></ol></div>
             
 
           </div>
@@ -5457,7 +5384,7 @@ exports.default = english;
 <script>
   function renderGitment() {
     var gitment = new Gitmint({
-      id: '1552627668000',
+      id: '1561448726000',
       owner: 'JoeMaybe',
       repo: 'joemaybe.github.io',
       
