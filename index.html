@@ -317,6 +317,315 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/26/Dart语言类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JoeMaybe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="One && More">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/26/Dart语言类型/" class="post-title-link" itemprop="url">Dart语言类型</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-26 10:13:05 / Modified: 14:47:23" itemprop="dateCreated datePublished" datetime="2019-06-26T10:13:05+08:00">2019-06-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Dart是一门类型安全的语言：同时使用静态类型检查和运行时检测机制确保变量的值总是和它的静态类型是一致的。虽然类型是必须要有的，但是由于类型推断的存在写不写类型注解成为可选项。</p>
+<p>这遍文章主要讲述Dart 2种加入的类型安全特性。</p>
+<p>静态类型检查的一个好处是是可以在编译器用Dart的静态分析器发现存在的bug。</p>
+<p>你可以通过对范型类添加类型注解来修复大部分的静态错误。最常见的范型类就是集合类型List<t>和Map&lt;K,V&gt;。</t></p>
+<p>比如，在下面的代码中函数<code>printInts()</code>打印一个整数的列表，main函数创建这个列表并把它传给<code>printInts()</code>。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> printInts(<span class="built_in">List</span>&lt;<span class="built_in">int</span>&gt; a) =&gt; <span class="built_in">print</span>(a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  <span class="keyword">var</span> list = [];</span><br><span class="line">  list.add(<span class="number">1</span>);</span><br><span class="line">  list.add(<span class="string">"2"</span>);</span><br><span class="line">  printInts(list);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码运行后在调用printInts(list)时报了一个类型错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error • The argument type &apos;List&apos; can&apos;t be assigned to the parameter type &apos;List&lt;int&gt;&apos; • argument_type_not_assignable</span><br></pre></td></tr></table></figure>
+<p>该错误显示这是一个不安全的隐形类型转换（从List<dynamic>到List<int>）造成的。list变量的静态类型是List<dynamic>。因为初始化声明<code>var list = []</code>没有提供解析器足够的信息来推断它的类型而只能认为它是dynamic。而printInts函数希望接受类型为List<int>的参数，因此导致了不一致的类型。</int></dynamic></int></dynamic></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/26/Dart语言类型/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/26/Flutter错题集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JoeMaybe">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="One && More">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/26/Flutter错题集/" class="post-title-link" itemprop="url">Flutter错题集</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-26 09:59:53 / Modified: 14:47:02" itemprop="dateCreated datePublished" datetime="2019-06-26T09:59:53+08:00">2019-06-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p><strong><code>catch :type &#39;_InternalLinkedHashMap&lt;dynamic, dynamic&gt;&#39; is not a subtype of type &#39;Map&lt;String, String&gt;&#39;</code></strong></p>
+<p>看如下的代码：</p>
+</li>
+</ol>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> platform  = <span class="keyword">const</span> MethodChannel(<span class="string">'flutter.xxx.com.cn/common'</span>);</span><br><span class="line"><span class="keyword">final</span>  userInfo = <span class="keyword">await</span> platform.invokeMethod&lt;<span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt;&gt;(<span class="string">'getLoginUserInfo'</span>);</span><br></pre></td></tr></table></figure>
+<p>在Flutter中通过MethodChannel与原生通信时，原生message decode之后是_InternalLinkedHashMap&lt;dynamic, dynamic&gt;类型的，并不能通过隐式转换变成Map&lt;String, String&gt;，所以我们需要自己进行解析：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span>  userInfo = <span class="keyword">await</span> platform.invokeMethod(<span class="string">'getLoginUserInfo'</span>);</span><br><span class="line"><span class="built_in">Map</span>&lt;<span class="built_in">String</span>,<span class="built_in">String</span>&gt; result =&#123;</span><br><span class="line">    <span class="string">'userId'</span>:userInfo[<span class="string">'userId'</span>],</span><br><span class="line">    <span class="string">'token'</span>:userInfo[<span class="string">'token'</span>],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然也可以调用invokeMapMethod做显示类型转换：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span>  userInfo = <span class="keyword">await</span> platform.invokeMapMethod&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt;(<span class="string">'getLoginUserInfo'</span>);</span><br><span class="line"><span class="keyword">var</span> result =&#123;</span><br><span class="line">    <span class="string">'userId'</span>:userInfo[<span class="string">'userId'</span>],</span><br><span class="line">    <span class="string">'token'</span>:userInfo[<span class="string">'token'</span>],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/25/Flutter Overview/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1120,7 +1429,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-12 14:30:14" itemprop="dateModified" datetime="2019-04-12T14:30:14+08:00">2019-04-12</time>
+                <time title="Modified: 2019-06-26 14:52:38" itemprop="dateModified" datetime="2019-06-26T14:52:38+08:00">2019-06-26</time>
               
             
           </span>
@@ -1765,368 +2074,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/19/react-composite-inheritance/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JoeMaybe">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="One && More">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/19/react-composite-inheritance/" class="post-title-link" itemprop="url">React基础：组合 vs 继承</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-02-19 15:39:11" itemprop="dateCreated datePublished" datetime="2019-02-19T15:39:11+08:00">2019-02-19</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-03-27 16:55:23" itemprop="dateModified" datetime="2019-03-27T16:55:23+08:00">2019-03-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>问题描述：RN项目里需要每个页面监听Android Back键从而实现物理键回退功能</p>
-<h2 id="继承方案"><a href="#继承方案" class="headerlink" title="继承方案"></a>继承方案</h2><p>定义一个基础组件BaseComponent做监听，所有的页面都继承这个组件</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/02/19/react-composite-inheritance/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/19/js-class-inheritance/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JoeMaybe">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="One && More">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/19/js-class-inheritance/" class="post-title-link" itemprop="url">JS基础：类和继承</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-02-19 15:39:04" itemprop="dateCreated datePublished" datetime="2019-02-19T15:39:04+08:00">2019-02-19</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-03-27 16:55:23" itemprop="dateModified" datetime="2019-03-27T16:55:23+08:00">2019-03-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="认识Javascript的类"><a href="#认识Javascript的类" class="headerlink" title="认识Javascript的类"></a>认识Javascript的类</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">name, passwordHash</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.password = passwordHash;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">User.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"[User "</span> + <span class="keyword">this</span>.name + <span class="string">"]"</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">User.prototype.checkPassword = <span class="function"><span class="keyword">function</span>(<span class="params">password</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> hash(password) === <span class="keyword">this</span>.passwordHash;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/02/19/js-class-inheritance/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
 
 
           </div>
@@ -2168,7 +2122,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2238,7 +2192,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
