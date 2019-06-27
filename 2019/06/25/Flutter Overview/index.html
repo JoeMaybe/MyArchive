@@ -104,7 +104,9 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/06/25/Flutter%20Overview/flutter_overview.svg">
 <meta property="og:image" content="http://yoursite.com/2019/06/25/Flutter%20Overview/Class%20Diagram.png">
-<meta property="og:updated_time" content="2019-06-25T09:24:02.000Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/25/Flutter%20Overview/v2-936c6436c0db8e312862bed12cc7f47f_hd.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/25/Flutter%20Overview/widgets_framework.png">
+<meta property="og:updated_time" content="2019-06-27T03:33:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flutter Overview">
 <meta name="twitter:description" content="Architecture官方对Flutter架构的说明  主要分为几个项目：  flutter flutter engine 2d图形库Skia Dart VM">
@@ -367,12 +369,24 @@
                 
               
 
-              <time title="Created: 2019-06-25 15:45:26 / Modified: 17:24:02" itemprop="dateCreated datePublished" datetime="2019-06-25T15:45:26+08:00">2019-06-25</time>
+              <time title="Created: 2019-06-25 15:45:26" itemprop="dateCreated datePublished" datetime="2019-06-25T15:45:26+08:00">2019-06-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-27 11:33:48" itemprop="dateModified" datetime="2019-06-27T11:33:48+08:00">2019-06-27</time>
               
             
           </span>
@@ -436,6 +450,14 @@
 <li>runtime：主要负责Dart和Engine之间的交互，代表Dart App的运行实例，其中ui.window就是RuntimeController</li>
 <li>lib：C++ Engine层向上提供lib库dart.ui，除了ui.window还有painting，compositing，text等</li>
 </ol>
+<h3 id="Framework"><a href="#Framework" class="headerlink" title="Framework"></a>Framework</h3><p><img src="/2019/06/25/Flutter Overview/v2-936c6436c0db8e312862bed12cc7f47f_hd.jpg" alt="Pipeline"></p>
+<p><img src="/2019/06/25/Flutter Overview/widgets_framework.png" alt="widgets_framework"></p>
+<ul>
+<li>Widget Tree</li>
+<li>Element Tree</li>
+<li>RenderObject Tree</li>
+<li>Layer Tree</li>
+</ul>
 
       
     </div>
@@ -680,7 +702,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Architecture"><span class="nav-number">1.</span> <span class="nav-text">Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Engine"><span class="nav-number">2.</span> <span class="nav-text">Engine</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Architecture"><span class="nav-number">1.</span> <span class="nav-text">Architecture</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Engine"><span class="nav-number">2.</span> <span class="nav-text">Engine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Framework"><span class="nav-number">3.</span> <span class="nav-text">Framework</span></a></li></ol></div>
             
 
           </div>
